@@ -76,7 +76,12 @@ h1 {
 </head>
 
 <body>
-
+      
+<iframe
+    name="iframeEnvio"
+    style="display:none;">
+</iframe>
+      
 <div class="contenedor">
 
 <h1>📷 Registro QR</h1>
@@ -130,43 +135,39 @@ function codigoLeido(codigo) {
 const url =
     APPS_SCRIPT_URL +
     "?codigo=" +
-    encodeURIComponent(codigo) +
-    "&t=" +
-    Date.now();
+    encodeURIComponent(codigo);
 
 
-const imagen = new Image();
+// Crear formulario oculto
+const formulario = document.createElement("form");
 
-imagen.onload = function() {
+formulario.method = "GET";
+formulario.action = url;
+formulario.target = "iframeEnvio";
+formulario.style.display = "none";
 
-    document.getElementById("estado").innerText =
-        "✓ Código registrado";
-
-    document.getElementById("estado").className =
-        "estado ok";
-
-};
-
-imagen.onerror = function() {
-
-    // Aunque el navegador informe error al cargar
-    // la respuesta, la petición puede haber llegado
-    // correctamente a Apps Script.
-
-    document.getElementById("estado").innerText =
-        "✓ Código enviado";
-
-    document.getElementById("estado").className =
-        "estado ok";
-
-};
+document.body.appendChild(formulario);
 
 
-imagen.src = url;
+// Enviar a Apps Script
+formulario.submit();
+
+
+// Eliminar formulario después del envío
+setTimeout(function() {
+    formulario.remove();
+}, 1000);
+
+
+// Mostrar confirmación
+document.getElementById("estado").innerText =
+    "✓ Código enviado";
+
+document.getElementById("estado").className =
+    "estado ok";
 
 
 // Preparar siguiente lectura
-
 setTimeout(function() {
 
     procesando = false;
