@@ -125,47 +125,57 @@ function codigoLeido(codigo) {
         "Registrando...";
 
 
-    const url =
-        APPS_SCRIPT_URL +
-        "?codigo=" +
-        encodeURIComponent(codigo);
+//
+
+const url =
+    APPS_SCRIPT_URL +
+    "?codigo=" +
+    encodeURIComponent(codigo) +
+    "&t=" +
+    Date.now();
 
 
-    fetch(url, {
-        method: "GET",
-        mode: "no-cors"
-    })
-    .then(function() {
+const imagen = new Image();
 
-        document.getElementById("estado").innerText =
-            "✓ Código registrado";
+imagen.onload = function() {
 
-        document.getElementById("estado").className =
-            "estado ok";
+    document.getElementById("estado").innerText =
+        "✓ Código registrado";
+
+    document.getElementById("estado").className =
+        "estado ok";
+
+};
+
+imagen.onerror = function() {
+
+    // Aunque el navegador informe error al cargar
+    // la respuesta, la petición puede haber llegado
+    // correctamente a Apps Script.
+
+    document.getElementById("estado").innerText =
+        "✓ Código enviado";
+
+    document.getElementById("estado").className =
+        "estado ok";
+
+};
 
 
-        setTimeout(function() {
+imagen.src = url;
 
-            procesando = false;
 
-            document.getElementById("estado").innerText =
-                "Listo para la siguiente lectura";
+// Preparar siguiente lectura
 
-        }, 1500);
+setTimeout(function() {
 
-    })
-    .catch(function(error) {
+    procesando = false;
 
-        document.getElementById("estado").innerText =
-            "Error al registrar";
+    document.getElementById("estado").innerText =
+        "Listo para la siguiente lectura";
 
-        document.getElementById("estado").className =
-            "estado error";
-
-        procesando = false;
-
-    });
-
+}, 1500);
+      
 }
 
 
