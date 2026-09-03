@@ -21,59 +21,147 @@
 }
 
 body {
+
     margin: 0;
+
     background: #111827;
+
     color: white;
+
     font-family: Arial, sans-serif;
+
 }
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
 
 .contenedor {
+
     width: 100%;
+
     max-width: 500px;
+
     margin: auto;
+
     padding: 20px;
+
     text-align: center;
+
 }
+
 
 h1 {
-    margin: 10px 0 20px;
+
+    margin: 10px 0 15px;
+
 }
 
-#reader {
-    width: 100%;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-}
 
-.resultado {
-    margin-top: 20px;
-    padding: 20px;
-    background: #1f2937;
-    border-radius: 15px;
-}
-
-.codigo {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 10px 0;
-}
+/* =========================================
+   USUARIO
+========================================= */
 
 .usuario {
+
     font-size: 18px;
-    margin-bottom: 10px;
+
+    margin-bottom: 15px;
+
 }
+
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.contador {
+
+    background: #1f2937;
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    font-size: 18px;
+
+}
+
+.contadorNumero {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   LECTOR
+========================================= */
+
+#reader {
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+.resultado {
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    background: #1f2937;
+
+    border-radius: 15px;
+
+}
+
+
+.codigo {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    margin: 10px 0;
+
+}
+
 
 .estado {
+
     font-size: 18px;
+
 }
+
 
 .ok {
+
     color: #4ade80;
+
 }
 
+
 .error {
+
     color: #f87171;
+
 }
 
 
@@ -86,9 +174,11 @@ h1 {
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     background: #111827;
@@ -98,21 +188,29 @@ h1 {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
+
 }
+
 
 .usuarioBox {
 
     width: 90%;
+
     max-width: 400px;
 
     text-align: center;
+
 }
+
 
 .usuarioBox h2 {
 
     margin-bottom: 30px;
+
 }
+
 
 .botonUsuario {
 
@@ -136,9 +234,198 @@ h1 {
 
 }
 
+
 .botonUsuario:active {
 
     transform: scale(0.98);
+
+}
+
+
+/* =========================================
+   PANTALLA REGISTRADO
+========================================= */
+
+#mensajeRegistro {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.97);
+
+    z-index: 2000;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.registroBox {
+
+    width: 90%;
+
+    max-width: 450px;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+.iconoRegistro {
+
+    font-size: 80px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.tituloRegistro {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #4ade80;
+
+    margin-bottom: 20px;
+
+}
+
+
+.codigoRegistro {
+
+    font-size: 40px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+}
+
+
+.usuarioRegistro {
+
+    font-size: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.continuarRegistro {
+
+    font-size: 17px;
+
+    color: #d1d5db;
+
+}
+
+
+/* =========================================
+   PANTALLA QR BLOQUEADO
+========================================= */
+
+#mensajeBloqueado {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.97);
+
+    z-index: 2000;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.bloqueadoBox {
+
+    width: 90%;
+
+    max-width: 450px;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+.iconoBloqueado {
+
+    font-size: 75px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.tituloBloqueado {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: #f87171;
+
+    margin-bottom: 20px;
+
+}
+
+
+.codigoBloqueado {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+}
+
+
+.tiempoBloqueado {
+
+    font-size: 19px;
+
+    color: #d1d5db;
+
+    margin-bottom: 25px;
+
+}
+
+
+.continuarBloqueado {
+
+    font-size: 17px;
+
+    color: #9ca3af;
 
 }
 
@@ -162,6 +449,7 @@ h1 {
             ¿Quién está utilizando este teléfono?
         </h2>
 
+
         <button
             class="botonUsuario"
             onclick="seleccionarUsuario('Julio')">
@@ -169,6 +457,7 @@ h1 {
             Julio
 
         </button>
+
 
         <button
             class="botonUsuario"
@@ -185,28 +474,127 @@ h1 {
 
 
 <!-- =========================================
+     PANTALLA REGISTRADO
+========================================= -->
+
+<div id="mensajeRegistro">
+
+    <div class="registroBox">
+
+        <div class="iconoRegistro">
+            ✓
+        </div>
+
+        <div class="tituloRegistro">
+            REGISTRADO
+        </div>
+
+        <div
+            id="codigoRegistro"
+            class="codigoRegistro">
+        </div>
+
+        <div
+            id="usuarioRegistro"
+            class="usuarioRegistro">
+        </div>
+
+        <div class="continuarRegistro">
+
+            Listo para el siguiente código...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     PANTALLA CÓDIGO BLOQUEADO
+========================================= -->
+
+<div id="mensajeBloqueado">
+
+    <div class="bloqueadoBox">
+
+        <div class="iconoBloqueado">
+            ⚠️
+        </div>
+
+        <div class="tituloBloqueado">
+            YA REGISTRADO
+        </div>
+
+        <div
+            id="codigoBloqueado"
+            class="codigoBloqueado">
+        </div>
+
+        <div
+            id="tiempoBloqueado"
+            class="tiempoBloqueado">
+        </div>
+
+        <div class="continuarBloqueado">
+
+            Puede continuar con otro código.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
      APLICACIÓN
 ========================================= -->
 
 <div class="contenedor">
 
-    <h1>📷 Registro QR</h1>
+    <h1>
+        📷 Registro QR
+    </h1>
+
 
     <div class="usuario">
 
         Usuario:
 
-        <strong id="usuarioActual">—</strong>
+        <strong id="usuarioActual">
+            —
+        </strong>
 
     </div>
 
+
+    <div class="contador">
+
+        Registros de esta sesión
+
+        <div
+            id="contador"
+            class="contadorNumero">
+
+            0
+
+        </div>
+
+    </div>
+
+
     <div id="reader"></div>
+
 
     <div class="resultado">
 
         <div>
             Última lectura
         </div>
+
 
         <div
             id="codigo"
@@ -215,6 +603,7 @@ h1 {
             —
 
         </div>
+
 
         <div
             id="estado"
@@ -242,12 +631,24 @@ const APPS_SCRIPT_URL =
 
 
 // ==========================================
+// CONFIGURACIÓN
+// ==========================================
+
+// Tiempo de bloqueo por código
+
+const TIEMPO_BLOQUEO =
+    5 * 60 * 1000;
+
+
+// ==========================================
 // VARIABLES
 // ==========================================
 
 let usuarioActual = null;
 
 let procesando = false;
+
+let cantidadRegistros = 0;
 
 
 // ==========================================
@@ -313,12 +714,328 @@ function seleccionarUsuario(usuario) {
 
 
 // ==========================================
+// OBTENER BLOQUEOS
+// ==========================================
+
+function obtenerBloqueos() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "bloqueosQR"
+            )
+        ) || {};
+
+    } catch (error) {
+
+        return {};
+
+    }
+
+}
+
+
+// ==========================================
+// GUARDAR BLOQUEO
+// ==========================================
+
+function guardarBloqueo(codigo) {
+
+    const bloqueos =
+        obtenerBloqueos();
+
+
+    bloqueos[codigo] =
+        Date.now();
+
+
+    localStorage.setItem(
+        "bloqueosQR",
+        JSON.stringify(bloqueos)
+    );
+
+}
+
+
+// ==========================================
+// VERIFICAR SI ESTÁ BLOQUEADO
+// ==========================================
+
+function obtenerTiempoRestante(codigo) {
+
+    const bloqueos =
+        obtenerBloqueos();
+
+
+    const momento =
+        bloqueos[codigo];
+
+
+    if (!momento) {
+
+        return 0;
+
+    }
+
+
+    const transcurrido =
+        Date.now() - momento;
+
+
+    const restante =
+        TIEMPO_BLOQUEO - transcurrido;
+
+
+    if (restante <= 0) {
+
+        delete bloqueos[codigo];
+
+
+        localStorage.setItem(
+            "bloqueosQR",
+            JSON.stringify(bloqueos)
+        );
+
+
+        return 0;
+
+    }
+
+
+    return restante;
+
+}
+
+
+// ==========================================
+// FORMATEAR TIEMPO
+// ==========================================
+
+function formatearTiempo(milisegundos) {
+
+    const segundos =
+        Math.ceil(
+            milisegundos / 1000
+        );
+
+
+    const minutos =
+        Math.floor(
+            segundos / 60
+        );
+
+
+    const segundosRestantes =
+        segundos % 60;
+
+
+    return
+        minutos +
+        " min " +
+        segundosRestantes +
+        " seg";
+
+}
+
+
+// ==========================================
+// SONIDO
+// ==========================================
+
+function reproducirSonido() {
+
+    try {
+
+        const contexto =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+
+        const oscilador =
+            contexto.createOscillator();
+
+
+        const ganancia =
+            contexto.createGain();
+
+
+        oscilador.type =
+            "sine";
+
+
+        oscilador.frequency.value =
+            880;
+
+
+        ganancia.gain.value =
+            0.15;
+
+
+        oscilador.connect(
+            ganancia
+        );
+
+
+        ganancia.connect(
+            contexto.destination
+        );
+
+
+        oscilador.start();
+
+
+        oscilador.stop(
+            contexto.currentTime +
+            0.15
+        );
+
+    } catch (error) {
+
+        console.log(
+            "No se pudo reproducir sonido"
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// VIBRACIÓN
+// ==========================================
+
+function vibrar() {
+
+    if (
+        "vibrate"
+        in navigator
+    ) {
+
+        navigator.vibrate(
+            [150]
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// MOSTRAR REGISTRADO
+// ==========================================
+
+function mostrarRegistrado(
+    codigo
+) {
+
+    document.getElementById(
+        "codigoRegistro"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "usuarioRegistro"
+    ).innerText =
+        "Usuario: " +
+        usuarioActual;
+
+
+    document.getElementById(
+        "mensajeRegistro"
+    ).style.display =
+        "flex";
+
+
+    reproducirSonido();
+
+    vibrar();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajeRegistro"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+
+        },
+        1500
+    );
+
+}
+
+
+// ==========================================
+// MOSTRAR BLOQUEADO
+// ==========================================
+
+function mostrarBloqueado(
+    codigo,
+    restante
+) {
+
+    document.getElementById(
+        "codigoBloqueado"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "tiempoBloqueado"
+    ).innerText =
+        "Disponible nuevamente en " +
+        formatearTiempo(
+            restante
+        );
+
+
+    document.getElementById(
+        "mensajeBloqueado"
+    ).style.display =
+        "flex";
+
+
+    vibrar();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajeBloqueado"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+
+        },
+        1800
+    );
+
+}
+
+
+// ==========================================
 // LEER QR
 // ==========================================
 
 function codigoLeido(codigo) {
 
-    // Evitar lecturas repetidas
+
+    // Evitar lecturas simultáneas
 
     if (procesando) {
 
@@ -327,7 +1044,9 @@ function codigoLeido(codigo) {
     }
 
 
-    // Verificar usuario
+    // ======================================
+    // VERIFICAR USUARIO
+    // ======================================
 
     if (!usuarioActual) {
 
@@ -340,7 +1059,52 @@ function codigoLeido(codigo) {
     }
 
 
-    procesando = true;
+    // ======================================
+    // LIMPIAR CÓDIGO
+    // ======================================
+
+    codigo =
+        codigo.trim();
+
+
+    if (!codigo) {
+
+        return;
+
+    }
+
+
+    // ======================================
+    // VERIFICAR BLOQUEO DE 5 MINUTOS
+    // ======================================
+
+    const tiempoRestante =
+        obtenerTiempoRestante(
+            codigo
+        );
+
+
+    if (
+        tiempoRestante > 0
+    ) {
+
+        procesando =
+            true;
+
+
+        mostrarBloqueado(
+            codigo,
+            tiempoRestante
+        );
+
+
+        return;
+
+    }
+
+
+    procesando =
+        true;
 
 
     // ======================================
@@ -356,7 +1120,7 @@ function codigoLeido(codigo) {
     document.getElementById(
         "estado"
     ).innerText =
-        "Enviando...";
+        "Registrando...";
 
 
     document.getElementById(
@@ -366,47 +1130,65 @@ function codigoLeido(codigo) {
 
 
     // ======================================
-    // CREAR URL DIRECTA
+    // CREAR URL
     // ======================================
 
     const url =
         APPS_SCRIPT_URL +
         "?codigo=" +
-        encodeURIComponent(codigo) +
+        encodeURIComponent(
+            codigo
+        ) +
         "&usuario=" +
-        encodeURIComponent(usuarioActual);
-
-
-    console.log(
-        "URL enviada:",
-        url
-    );
-
-
-// ======================================
-// ENVIAR A GOOGLE APPS SCRIPT
-// SIN CAMBIAR DE PÁGINA
-// ======================================
-
-const imagenEnvio = new Image();
-
-imagenEnvio.src =
-    url +
-    "&t=" +
-    Date.now();
+        encodeURIComponent(
+            usuarioActual
+        ) +
+        "&t=" +
+        Date.now();
 
 
     // ======================================
-    // CONFIRMACIÓN VISUAL
+    // ENVIAR SIN CAMBIAR DE PÁGINA
+    // ======================================
+
+    const imagenEnvio =
+        new Image();
+
+
+    imagenEnvio.src =
+        url;
+
+
+    // ======================================
+    // GUARDAR BLOQUEO
+    // ======================================
+
+    guardarBloqueo(
+        codigo
+    );
+
+
+    // ======================================
+    // AUMENTAR CONTADOR
+    // ======================================
+
+    cantidadRegistros++;
+
+
+    document.getElementById(
+        "contador"
+    ).innerText =
+        cantidadRegistros;
+
+
+    // ======================================
+    // ACTUALIZAR ESTADO
     // ======================================
 
     document.getElementById(
         "estado"
     ).innerText =
-        "✓ Enviado: " +
-        codigo +
-        " — " +
-        usuarioActual;
+        "✓ Registrado";
 
 
     document.getElementById(
@@ -416,27 +1198,12 @@ imagenEnvio.src =
 
 
     // ======================================
-    // PERMITIR SIGUIENTE LECTURA
+    // MOSTRAR CONFIRMACIÓN
     // ======================================
 
-    setTimeout(function() {
-
-        procesando = false;
-
-
-        document.getElementById(
-            "estado"
-        ).innerText =
-            "Listo para la siguiente lectura";
-
-
-        document.getElementById(
-            "estado"
-        ).className =
-            "estado";
-
-
-    }, 3000);
+    mostrarRegistrado(
+        codigo
+    );
 
 }
 
@@ -457,6 +1224,7 @@ const scanner =
             qrbox: {
 
                 width: 250,
+
                 height: 250
 
             }
