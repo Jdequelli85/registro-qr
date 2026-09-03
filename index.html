@@ -338,148 +338,154 @@ function seleccionarUsuario(usuario) {
 
 function codigoLeido(codigo) {
 
+    // Evitar registrar el mismo QR varias veces
+    // mientras se está procesando
+
     if (procesando) {
-
         return;
-
     }
 
 
+    // Verificar que haya un usuario seleccionado
+
     if (!usuarioActual) {
 
-        alert(
-            "Primero debe seleccionar un usuario"
-        );
+        alert("Primero debe seleccionar un usuario");
 
         return;
-
     }
 
 
     procesando = true;
 
 
-    // ======================================
-    // MOSTRAR CÓDIGO
-    // ======================================
+    // ==========================================
+    // MOSTRAR CÓDIGO ESCANEADO
+    // ==========================================
 
-    document.getElementById(
-        "codigo"
-    ).innerText =
-        codigo;
+    document.getElementById("codigo")
+        .innerText = codigo;
 
 
-    document.getElementById(
-        "estado"
-    ).innerText =
-        "Registrando...";
+    document.getElementById("estado")
+        .innerText = "Registrando...";
 
 
-    document.getElementById(
-        "estado"
-    ).className =
-        "estado";
+    document.getElementById("estado")
+        .className = "estado";
 
 
-    // ======================================
-    // CREAR URL
-    // ======================================
-
-    const url =
-        APPS_SCRIPT_URL +
-        "?codigo=" +
-        encodeURIComponent(codigo) +
-        "&usuario=" +
-        encodeURIComponent(usuarioActual);
-
-
-    // ======================================
-    // CREAR FORMULARIO OCULTO
-    // ======================================
+    // ==========================================
+    // CREAR FORMULARIO
+    // ==========================================
 
     const formulario =
         document.createElement("form");
 
 
-    formulario.method =
-        "GET";
+    formulario.method = "GET";
+
+    formulario.action = APPS_SCRIPT_URL;
+
+    formulario.target = "iframeEnvio";
+
+    formulario.style.display = "none";
 
 
-    formulario.action =
-        url;
+    // ==========================================
+    // CAMPO CÓDIGO
+    // ==========================================
+
+    const campoCodigo =
+        document.createElement("input");
+
+    campoCodigo.type = "hidden";
+
+    campoCodigo.name = "codigo";
+
+    campoCodigo.value = codigo;
 
 
-    formulario.target =
-        "iframeEnvio";
+    formulario.appendChild(campoCodigo);
 
 
-    formulario.style.display =
-        "none";
+    // ==========================================
+    // CAMPO USUARIO
+    // ==========================================
+
+    const campoUsuario =
+        document.createElement("input");
+
+    campoUsuario.type = "hidden";
+
+    campoUsuario.name = "usuario";
+
+    campoUsuario.value = usuarioActual;
 
 
-    document.body.appendChild(
-        formulario
-    );
+    formulario.appendChild(campoUsuario);
 
 
-    // ======================================
-    // ENVIAR A APPS SCRIPT
-    // ======================================
+    // ==========================================
+    // AGREGAR FORMULARIO A LA PÁGINA
+    // ==========================================
+
+    document.body.appendChild(formulario);
+
+
+    // ==========================================
+    // ENVIAR A GOOGLE APPS SCRIPT
+    // ==========================================
 
     formulario.submit();
 
 
-    // ======================================
+    // ==========================================
+    // MOSTRAR CONFIRMACIÓN
+    // ==========================================
+
+    document.getElementById("estado")
+        .innerText =
+        "✓ Enviado: " + codigo +
+        " — " + usuarioActual;
+
+
+    document.getElementById("estado")
+        .className =
+        "estado ok";
+
+
+    // ==========================================
     // ELIMINAR FORMULARIO
-    // ======================================
+    // ==========================================
 
     setTimeout(function() {
 
         formulario.remove();
 
-    }, 1000);
+    }, 2000);
 
 
-    // ======================================
-    // CONFIRMACIÓN VISUAL
-    // ======================================
-
-    document.getElementById(
-        "estado"
-    ).innerText =
-        "✓ Código enviado por " +
-        usuarioActual;
-
-
-    document.getElementById(
-        "estado"
-    ).className =
-        "estado ok";
-
-
-    // ======================================
-    // PERMITIR SIGUIENTE LECTURA
-    // ======================================
+    // ==========================================
+    // PERMITIR NUEVO ESCANEO
+    // ==========================================
 
     setTimeout(function() {
 
         procesando = false;
 
-
-        document.getElementById(
-            "estado"
-        ).innerText =
+        document.getElementById("estado")
+            .innerText =
             "Listo para la siguiente lectura";
 
-
-        document.getElementById(
-            "estado"
-        ).className =
+        document.getElementById("estado")
+            .className =
             "estado";
 
-    }, 2000);
+    }, 2500);
 
 }
+
 
 
 // ==========================================
