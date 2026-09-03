@@ -336,58 +336,39 @@ function seleccionarUsuario(usuario) {
 // LEER QR
 // ==========================================
 
-function codigoLeido(codigo) {
+//
 
-
-    // Evitar lecturas múltiples
-    // simultáneas
+      function codigoLeido(codigo) {
 
     if (procesando) {
-
         return;
-
     }
-
-
-    // Verificar usuario
 
     if (!usuarioActual) {
 
-        alert(
-            "Primero debe seleccionar un usuario"
-        );
+        alert("Primero debe seleccionar un usuario");
 
         return;
-
     }
-
 
     procesando = true;
 
 
-    // Mostrar código
+    // Mostrar código en pantalla
 
-    document.getElementById(
-        "codigo"
-    ).innerText =
-        codigo;
+    document.getElementById("codigo")
+        .innerText = codigo;
 
+    document.getElementById("estado")
+        .innerText = "Registrando...";
 
-    document.getElementById(
-        "estado"
-    ).innerText =
-        "Registrando...";
+    document.getElementById("estado")
+        .className = "estado";
 
 
-    document.getElementById(
-        "estado"
-    ).className =
-        "estado";
-
-
-    // ======================================
-    // CREAR URL
-    // ======================================
+    // ==========================================
+    // CREAR URL CON CÓDIGO + USUARIO
+    // ==========================================
 
     const url =
         APPS_SCRIPT_URL +
@@ -397,45 +378,33 @@ function codigoLeido(codigo) {
         encodeURIComponent(usuarioActual);
 
 
-    // ======================================
+    // ==========================================
     // CREAR FORMULARIO OCULTO
-    // ======================================
+    // ==========================================
 
     const formulario =
         document.createElement("form");
 
+    formulario.method = "GET";
 
-    formulario.method =
-        "GET";
+    formulario.action = url;
 
+    formulario.target = "iframeEnvio";
 
-    formulario.action =
-        url;
-
-
-    formulario.target =
-        "iframeEnvio";
+    formulario.style.display = "none";
 
 
-    formulario.style.display =
-        "none";
+    document.body.appendChild(formulario);
 
 
-    document.body.appendChild(
-        formulario
-    );
-
-
-    // ======================================
-    // ENVIAR A APPS SCRIPT
-    // ======================================
+    // ==========================================
+    // ENVIAR A GOOGLE APPS SCRIPT
+    // ==========================================
 
     formulario.submit();
 
 
-    // ======================================
-    // ELIMINAR FORMULARIO
-    // ======================================
+    // Eliminar formulario después del envío
 
     setTimeout(function() {
 
@@ -444,20 +413,38 @@ function codigoLeido(codigo) {
     }, 1000);
 
 
-    // ======================================
-    // CONFIRMACIÓN
-    // ======================================
+    // ==========================================
+    // CONFIRMACIÓN VISUAL
+    // ==========================================
 
-    document.getElementById(
-        "estado"
-    ).innerText =
-        "✓ Código enviado";
+    document.getElementById("estado")
+        .innerText =
+        "✓ Código enviado por " + usuarioActual;
 
-
-    document.getElementById(
-        "estado"
-    ).className =
+    document.getElementById("estado")
+        .className =
         "estado ok";
+
+
+    // ==========================================
+    // PERMITIR SIGUIENTE ESCANEO
+    // ==========================================
+
+    setTimeout(function() {
+
+        procesando = false;
+
+        document.getElementById("estado")
+            .innerText =
+            "Listo para la siguiente lectura";
+
+        document.getElementById("estado")
+            .className =
+            "estado";
+
+    }, 2000);
+
+}
 
 
     // ======================================
