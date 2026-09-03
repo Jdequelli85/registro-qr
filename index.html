@@ -77,9 +77,9 @@ h1 {
 }
 
 
-/* -----------------------------------------
-   Pantalla de selección de usuario
------------------------------------------ */
+/* =========================================
+   PANTALLA DE SELECCIÓN DE USUARIO
+========================================= */
 
 #pantallaUsuario {
 
@@ -336,39 +336,54 @@ function seleccionarUsuario(usuario) {
 // LEER QR
 // ==========================================
 
-//
-
-      function codigoLeido(codigo) {
+function codigoLeido(codigo) {
 
     if (procesando) {
+
         return;
+
     }
+
 
     if (!usuarioActual) {
 
-        alert("Primero debe seleccionar un usuario");
+        alert(
+            "Primero debe seleccionar un usuario"
+        );
 
         return;
+
     }
+
 
     procesando = true;
 
 
-    // Mostrar código en pantalla
+    // ======================================
+    // MOSTRAR CÓDIGO
+    // ======================================
 
-    document.getElementById("codigo")
-        .innerText = codigo;
-
-    document.getElementById("estado")
-        .innerText = "Registrando...";
-
-    document.getElementById("estado")
-        .className = "estado";
+    document.getElementById(
+        "codigo"
+    ).innerText =
+        codigo;
 
 
-    // ==========================================
-    // CREAR URL CON CÓDIGO + USUARIO
-    // ==========================================
+    document.getElementById(
+        "estado"
+    ).innerText =
+        "Registrando...";
+
+
+    document.getElementById(
+        "estado"
+    ).className =
+        "estado";
+
+
+    // ======================================
+    // CREAR URL
+    // ======================================
 
     const url =
         APPS_SCRIPT_URL +
@@ -378,33 +393,45 @@ function seleccionarUsuario(usuario) {
         encodeURIComponent(usuarioActual);
 
 
-    // ==========================================
+    // ======================================
     // CREAR FORMULARIO OCULTO
-    // ==========================================
+    // ======================================
 
     const formulario =
         document.createElement("form");
 
-    formulario.method = "GET";
 
-    formulario.action = url;
-
-    formulario.target = "iframeEnvio";
-
-    formulario.style.display = "none";
+    formulario.method =
+        "GET";
 
 
-    document.body.appendChild(formulario);
+    formulario.action =
+        url;
 
 
-    // ==========================================
-    // ENVIAR A GOOGLE APPS SCRIPT
-    // ==========================================
+    formulario.target =
+        "iframeEnvio";
+
+
+    formulario.style.display =
+        "none";
+
+
+    document.body.appendChild(
+        formulario
+    );
+
+
+    // ======================================
+    // ENVIAR A APPS SCRIPT
+    // ======================================
 
     formulario.submit();
 
 
-    // Eliminar formulario después del envío
+    // ======================================
+    // ELIMINAR FORMULARIO
+    // ======================================
 
     setTimeout(function() {
 
@@ -413,42 +440,25 @@ function seleccionarUsuario(usuario) {
     }, 1000);
 
 
-    // ==========================================
+    // ======================================
     // CONFIRMACIÓN VISUAL
-    // ==========================================
+    // ======================================
 
-    document.getElementById("estado")
-        .innerText =
-        "✓ Código enviado por " + usuarioActual;
+    document.getElementById(
+        "estado"
+    ).innerText =
+        "✓ Código enviado por " +
+        usuarioActual;
 
-    document.getElementById("estado")
-        .className =
+
+    document.getElementById(
+        "estado"
+    ).className =
         "estado ok";
 
 
-    // ==========================================
-    // PERMITIR SIGUIENTE ESCANEO
-    // ==========================================
-
-    setTimeout(function() {
-
-        procesando = false;
-
-        document.getElementById("estado")
-            .innerText =
-            "Listo para la siguiente lectura";
-
-        document.getElementById("estado")
-            .className =
-            "estado";
-
-    }, 2000);
-
-}
-
-
     // ======================================
-    // PREPARAR SIGUIENTE LECTURA
+    // PERMITIR SIGUIENTE LECTURA
     // ======================================
 
     setTimeout(function() {
@@ -461,6 +471,11 @@ function seleccionarUsuario(usuario) {
         ).innerText =
             "Listo para la siguiente lectura";
 
+
+        document.getElementById(
+            "estado"
+        ).className =
+            "estado";
 
     }, 2000);
 
@@ -483,7 +498,6 @@ const scanner =
             qrbox: {
 
                 width: 250,
-
                 height: 250
 
             }
