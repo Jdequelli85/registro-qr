@@ -192,13 +192,6 @@ h1 {
 </div>
 
 
-<!-- Iframe invisible para enviar los datos -->
-
-<iframe
-    name="iframeEnvio"
-    style="display:none;">
-</iframe>
-
 
 <script>
 
@@ -302,26 +295,49 @@ function codigoLeido(codigo) {
         encodeURIComponent(usuarioActual);
 
 
-    // Crear formulario invisible
+   // ----------------------------------------------
+// Enviar código y usuario mediante POST
+// ----------------------------------------------
 
-    const formulario =
-        document.createElement("form");
+const datos = new URLSearchParams();
 
-    formulario.method = "GET";
-
-    formulario.action = url;
-
-    formulario.target = "iframeEnvio";
-
-    formulario.style.display = "none";
+datos.append("codigo", codigo);
+datos.append("usuario", usuarioActual);
 
 
-    document.body.appendChild(formulario);
+fetch(APPS_SCRIPT_URL, {
 
+    method: "POST",
 
-    // Enviar
+    body: datos,
 
-    formulario.submit();
+    mode: "no-cors"
+
+})
+.then(function() {
+
+    document.getElementById("estado")
+        .innerText =
+        "✓ Código registrado";
+
+    document.getElementById("estado")
+        .className =
+        "estado ok";
+
+})
+.catch(function(error) {
+
+    document.getElementById("estado")
+        .innerText =
+        "Error al enviar";
+
+    document.getElementById("estado")
+        .className =
+        "estado error";
+
+    console.error(error);
+
+});
 
 
     // Eliminar formulario
@@ -355,7 +371,7 @@ function codigoLeido(codigo) {
             .innerText =
             "Listo para la siguiente lectura";
 
-    }, 1500);
+    }, 2000);
 
 }
 
