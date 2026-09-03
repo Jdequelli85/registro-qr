@@ -383,14 +383,17 @@ function codigoLeido(codigo) {
     );
 
 
-    // ======================================
-    // ABRIR APPS SCRIPT
-    // ======================================
+// ======================================
+// ENVIAR A GOOGLE APPS SCRIPT
+// SIN CAMBIAR DE PÁGINA
+// ======================================
 
-    window.open(
-        url,
-        "_blank"
-    );
+const imagenEnvio = new Image();
+
+imagenEnvio.src =
+    url +
+    "&t=" +
+    Date.now();
 
 
     // ======================================
