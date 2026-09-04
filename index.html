@@ -260,9 +260,9 @@ h1 {
     color: #d1d5db;
 }
 
-<!-- =========================================
+/*<!-- =========================================
      PANTALLA QR YA REGISTRADO
-========================================= -->
+========================================= -->*/
 
 <div id="mensajeDuplicado">
 
@@ -1152,6 +1152,56 @@ function mostrarInvalido(
 
 }
 
+// ==========================================
+// MOSTRAR QR DUPLICADO
+// ==========================================
+
+function mostrarDuplicado(
+    codigo,
+    segundosRestantes
+) {
+
+    document.getElementById(
+        "codigoDuplicado"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "tiempoDuplicado"
+    ).innerText =
+        "Disponible nuevamente en " +
+        formatearTiempo(
+            segundosRestantes * 1000
+        );
+
+
+    document.getElementById(
+        "mensajeDuplicado"
+    ).style.display =
+        "flex";
+
+
+    vibrarError();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajeDuplicado"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+        },
+        1800
+    );
+
+}
 
 // ==========================================
 // MOSTRAR ERROR DE CONEXIÓN
@@ -1302,21 +1352,30 @@ function procesarRespuestaQR(
     }
 
 
-    // ======================================
-    // QR INVÁLIDO
-    // ======================================
+// ======================================
+// QR DUPLICADO
+// ======================================
 
-    const codigoInvalido =
+if (
+    respuesta.tipo === "duplicado"
+) {
+
+    const codigoDuplicado =
         respuesta.codigo ||
         document.getElementById(
             "codigo"
         ).innerText;
 
 
+    const segundosRestantes =
+        respuesta.segundosRestantes ||
+        0;
+
+
     document.getElementById(
         "estado"
     ).innerText =
-        "QR no válido";
+        "Ya registrado";
 
 
     document.getElementById(
@@ -1325,11 +1384,43 @@ function procesarRespuestaQR(
         "estado error";
 
 
-    mostrarInvalido(
-        codigoInvalido
+    mostrarDuplicado(
+        codigoDuplicado,
+        segundosRestantes
     );
 
+
+    return;
+
 }
+
+
+// ======================================
+// QR REALMENTE INVÁLIDO
+// ======================================
+
+const codigoInvalido =
+    respuesta.codigo ||
+    document.getElementById(
+        "codigo"
+    ).innerText;
+
+
+document.getElementById(
+    "estado"
+).innerText =
+    "QR no válido";
+
+
+document.getElementById(
+    "estado"
+).className =
+    "estado error";
+
+
+mostrarInvalido(
+    codigoInvalido
+);
 
 
 // ==========================================
