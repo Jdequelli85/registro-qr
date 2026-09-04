@@ -16,6 +16,10 @@
 
 <style>
 
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
 * {
     box-sizing: border-box;
 }
@@ -96,7 +100,7 @@ h1 {
 
 
 /* =========================================
-   RESULTADO
+   RESULTADO INFERIOR
 ========================================= */
 
 .resultado {
@@ -126,34 +130,26 @@ h1 {
 
 
 /* =========================================
-   PANTALLA DE SELECCIÓN DE USUARIO
+   PANTALLA DE USUARIO
 ========================================= */
 
 #pantallaUsuario {
-
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     background: #111827;
-
     z-index: 1000;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 }
 
 .usuarioBox {
-
     width: 90%;
     max-width: 400px;
-
     text-align: center;
 }
 
@@ -162,23 +158,17 @@ h1 {
 }
 
 .botonUsuario {
-
     width: 100%;
-
     padding: 18px;
-
     margin: 10px 0;
 
     border: none;
-
     border-radius: 12px;
 
     background: #2563eb;
-
     color: white;
 
     font-size: 20px;
-
     font-weight: bold;
 }
 
@@ -192,9 +182,7 @@ h1 {
 ========================================= */
 
 #mensajeRegistro {
-
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -212,12 +200,9 @@ h1 {
 }
 
 .registroBox {
-
     width: 90%;
     max-width: 450px;
-
     text-align: center;
-
     padding: 30px;
 }
 
@@ -227,86 +212,104 @@ h1 {
 }
 
 .tituloRegistro {
-
     font-size: 42px;
-
     font-weight: bold;
-
     color: #4ade80;
-
     margin-bottom: 20px;
 }
 
 .codigoRegistro {
-
     font-size: 40px;
-
     font-weight: bold;
-
     margin-bottom: 15px;
 }
 
 .usuarioRegistro {
-
     font-size: 20px;
-
     margin-bottom: 25px;
 }
 
 .continuarRegistro {
-
     font-size: 17px;
-
     color: #d1d5db;
 }
 
-/*<!-- =========================================
-     PANTALLA QR YA REGISTRADO
-========================================= -->*/
 
-<div id="mensajeDuplicado">
+/* =========================================
+   PANTALLA YA REGISTRADO
+========================================= */
 
-    <div class="invalidoBox">
+#mensajeDuplicado {
+    position: fixed;
+    top: 0;
+    left: 0;
 
-        <div class="iconoInvalido">
-            ⏱️
-        </div>
+    width: 100%;
+    height: 100%;
 
-        <div class="tituloInvalido"
-             style="color:#fbbf24;">
+    background: rgba(17, 24, 39, 0.97);
 
-            YA REGISTRADO
+    z-index: 2000;
 
-        </div>
+    display: none;
 
-        <div
-            id="codigoDuplicado"
-            class="codigoInvalido">
-        </div>
+    justify-content: center;
+    align-items: center;
+}
 
-        <div
-            id="tiempoDuplicado"
-            class="detalleInvalido">
-        </div>
+.duplicadoBox {
+    width: 90%;
+    max-width: 450px;
 
-        <div class="continuarInvalido">
+    text-align: center;
 
-            Puede continuar con otro código.
+    padding: 30px;
+}
 
-        </div>
+.iconoDuplicado {
+    font-size: 75px;
+    margin-bottom: 10px;
+}
 
-    </div>
+.tituloDuplicado {
+    font-size: 36px;
+    font-weight: bold;
 
-</div>
-      
+    color: #fbbf24;
+
+    margin-bottom: 20px;
+}
+
+.codigoDuplicado {
+    font-size: 38px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+    word-break: break-word;
+}
+
+.tiempoDuplicado {
+    font-size: 19px;
+
+    color: #d1d5db;
+
+    margin-bottom: 25px;
+}
+
+.continuarDuplicado {
+    font-size: 17px;
+
+    color: #9ca3af;
+}
+
+
 /* =========================================
    PANTALLA QR NO VÁLIDO
 ========================================= */
 
 #mensajeInvalido {
-
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -324,7 +327,6 @@ h1 {
 }
 
 .invalidoBox {
-
     width: 90%;
     max-width: 450px;
 
@@ -334,16 +336,12 @@ h1 {
 }
 
 .iconoInvalido {
-
     font-size: 75px;
-
     margin-bottom: 10px;
 }
 
 .tituloInvalido {
-
     font-size: 36px;
-
     font-weight: bold;
 
     color: #f87171;
@@ -352,9 +350,7 @@ h1 {
 }
 
 .codigoInvalido {
-
     font-size: 30px;
-
     font-weight: bold;
 
     margin-bottom: 15px;
@@ -363,7 +359,6 @@ h1 {
 }
 
 .detalleInvalido {
-
     font-size: 18px;
 
     color: #d1d5db;
@@ -372,7 +367,6 @@ h1 {
 }
 
 .continuarInvalido {
-
     font-size: 17px;
 
     color: #9ca3af;
@@ -380,13 +374,11 @@ h1 {
 
 
 /* =========================================
-   PANTALLA ERROR DE CONEXIÓN
+   PANTALLA ERROR CONEXIÓN
 ========================================= */
 
 #mensajeConexion {
-
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -404,7 +396,6 @@ h1 {
 }
 
 .conexionBox {
-
     width: 90%;
     max-width: 450px;
 
@@ -414,9 +405,7 @@ h1 {
 }
 
 .tituloConexion {
-
     font-size: 36px;
-
     font-weight: bold;
 
     color: #fbbf24;
@@ -425,7 +414,6 @@ h1 {
 }
 
 .detalleConexion {
-
     font-size: 19px;
 
     color: #d1d5db;
@@ -502,6 +490,41 @@ h1 {
 
         <div class="continuarRegistro">
             Listo para el siguiente código...
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     PANTALLA YA REGISTRADO
+========================================= -->
+
+<div id="mensajeDuplicado">
+
+    <div class="duplicadoBox">
+
+        <div class="iconoDuplicado">
+            ⏱️
+        </div>
+
+        <div class="tituloDuplicado">
+            YA REGISTRADO
+        </div>
+
+        <div
+            id="codigoDuplicado"
+            class="codigoDuplicado">
+        </div>
+
+        <div
+            id="tiempoDuplicado"
+            class="tiempoDuplicado">
+        </div>
+
+        <div class="continuarDuplicado">
+            Puede continuar con otro código.
         </div>
 
     </div>
@@ -755,7 +778,7 @@ function cambiarUsuario() {
 
 
 // ==========================================
-// OBTENER BLOQUEOS
+// OBTENER BLOQUEOS LOCALES
 // ==========================================
 
 function obtenerBloqueos() {
@@ -778,7 +801,7 @@ function obtenerBloqueos() {
 
 
 // ==========================================
-// GUARDAR BLOQUEO
+// GUARDAR BLOQUEO LOCAL
 // ==========================================
 
 function guardarBloqueo(codigo) {
@@ -802,7 +825,7 @@ function guardarBloqueo(codigo) {
 
 
 // ==========================================
-// OBTENER TIEMPO RESTANTE
+// OBTENER TIEMPO RESTANTE LOCAL
 // ==========================================
 
 function obtenerTiempoRestante(codigo) {
@@ -879,17 +902,18 @@ function formatearTiempo(
         segundos % 60;
 
 
-    return
+    return (
         minutos +
         " min " +
         segundosRestantes +
-        " seg";
+        " seg"
+    );
 
 }
 
 
 // ==========================================
-// SONIDO DE ÉXITO
+// SONIDO ÉXITO
 // ==========================================
 
 function reproducirSonidoExito() {
@@ -953,7 +977,7 @@ function reproducirSonidoExito() {
 
 
 // ==========================================
-// SONIDO DE ERROR
+// SONIDO ERROR
 // ==========================================
 
 function reproducirSonidoError() {
@@ -1023,8 +1047,7 @@ function reproducirSonidoError() {
 function vibrarExito() {
 
     if (
-        "vibrate"
-        in navigator
+        "vibrate" in navigator
     ) {
 
         navigator.vibrate(
@@ -1043,8 +1066,7 @@ function vibrarExito() {
 function vibrarError() {
 
     if (
-        "vibrate"
-        in navigator
+        "vibrate" in navigator
     ) {
 
         navigator.vibrate(
@@ -1100,7 +1122,6 @@ function mostrarRegistrado(
             procesando =
                 false;
 
-
         },
         1500
     );
@@ -1109,7 +1130,61 @@ function mostrarRegistrado(
 
 
 // ==========================================
-// MOSTRAR QR NO VÁLIDO
+// MOSTRAR DUPLICADO
+// ==========================================
+
+function mostrarDuplicado(
+    codigo,
+    segundosRestantes
+) {
+
+    document.getElementById(
+        "codigoDuplicado"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "tiempoDuplicado"
+    ).innerText =
+        "Disponible nuevamente en " +
+        formatearTiempo(
+            segundosRestantes * 1000
+        );
+
+
+    document.getElementById(
+        "mensajeDuplicado"
+    ).style.display =
+        "flex";
+
+
+    reproducirSonidoError();
+
+    vibrarError();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajeDuplicado"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+        },
+        1800
+    );
+
+}
+
+
+// ==========================================
+// MOSTRAR QR INVÁLIDO
 // ==========================================
 
 function mostrarInvalido(
@@ -1145,66 +1220,15 @@ function mostrarInvalido(
             procesando =
                 false;
 
-
         },
         1800
     );
 
 }
 
-// ==========================================
-// MOSTRAR QR DUPLICADO
-// ==========================================
-
-function mostrarDuplicado(
-    codigo,
-    segundosRestantes
-) {
-
-    document.getElementById(
-        "codigoDuplicado"
-    ).innerText =
-        codigo;
-
-
-    document.getElementById(
-        "tiempoDuplicado"
-    ).innerText =
-        "Disponible nuevamente en " +
-        formatearTiempo(
-            segundosRestantes * 1000
-        );
-
-
-    document.getElementById(
-        "mensajeDuplicado"
-    ).style.display =
-        "flex";
-
-
-    vibrarError();
-
-
-    setTimeout(
-        function() {
-
-            document.getElementById(
-                "mensajeDuplicado"
-            ).style.display =
-                "none";
-
-
-            procesando =
-                false;
-
-        },
-        1800
-    );
-
-}
 
 // ==========================================
-// MOSTRAR ERROR DE CONEXIÓN
+// MOSTRAR ERROR CONEXIÓN
 // ==========================================
 
 function mostrarErrorConexion() {
@@ -1232,7 +1256,6 @@ function mostrarErrorConexion() {
             procesando =
                 false;
 
-
         },
         2000
     );
@@ -1241,16 +1264,19 @@ function mostrarErrorConexion() {
 
 
 // ==========================================
-// RESPUESTA DE APPS SCRIPT
+// PROCESAR RESPUESTA DE APPS SCRIPT
 // ==========================================
 
 function procesarRespuestaQR(
-    respuesta
+    respuesta,
+    callbackName
 ) {
 
     // Cancelar temporizador
 
-    if (temporizadorRespuesta) {
+    if (
+        temporizadorRespuesta
+    ) {
 
         clearTimeout(
             temporizadorRespuesta
@@ -1262,25 +1288,22 @@ function procesarRespuestaQR(
     }
 
 
-    // Eliminar callback global
+    // Eliminar callback
 
-    const nombreCallback =
-        procesarRespuestaQR
-            ._callbackActivo;
-
-
-    if (nombreCallback) {
+    if (
+        callbackName
+    ) {
 
         try {
 
             delete window[
-                nombreCallback
+                callbackName
             ];
 
         } catch (error) {
 
             window[
-                nombreCallback
+                callbackName
             ] = undefined;
 
         }
@@ -1288,7 +1311,9 @@ function procesarRespuestaQR(
     }
 
 
-    // Verificar respuesta
+    // ======================================
+    // VERIFICAR RESPUESTA
+    // ======================================
 
     if (
         !respuesta ||
@@ -1303,16 +1328,21 @@ function procesarRespuestaQR(
 
 
     // ======================================
-    // QR VÁLIDO
+    // REGISTRO CORRECTO
     // ======================================
 
-    if (respuesta.ok === true) {
+    if (
+        respuesta.ok === true &&
+        respuesta.tipo === "ok"
+    ) {
 
         const codigo =
             respuesta.codigo;
 
 
-        // Guardar bloqueo
+        // Guardar bloqueo local
+        // solamente después de que
+        // Apps Script confirmó el registro.
 
         guardarBloqueo(
             codigo
@@ -1352,30 +1382,66 @@ function procesarRespuestaQR(
     }
 
 
-// ======================================
-// QR DUPLICADO
-// ======================================
+    // ======================================
+    // QR DUPLICADO
+    // ======================================
 
-if (
-    respuesta.tipo === "duplicado"
-) {
+    if (
+        respuesta.tipo === "duplicado"
+    ) {
 
-    const codigoDuplicado =
+        const codigo =
+            respuesta.codigo ||
+            document.getElementById(
+                "codigo"
+            ).innerText;
+
+
+        const segundos =
+            Number(
+                respuesta.segundosRestantes ||
+                0
+            );
+
+
+        document.getElementById(
+            "estado"
+        ).innerText =
+            "Ya registrado";
+
+
+        document.getElementById(
+            "estado"
+        ).className =
+            "estado error";
+
+
+        mostrarDuplicado(
+            codigo,
+            segundos
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // QR INVÁLIDO
+    // ======================================
+
+    const codigoInvalido =
         respuesta.codigo ||
         document.getElementById(
             "codigo"
         ).innerText;
 
 
-    const segundosRestantes =
-        respuesta.segundosRestantes ||
-        0;
-
-
     document.getElementById(
         "estado"
     ).innerText =
-        "Ya registrado";
+        "QR no válido";
 
 
     document.getElementById(
@@ -1384,83 +1450,52 @@ if (
         "estado error";
 
 
-    mostrarDuplicado(
-        codigoDuplicado,
-        segundosRestantes
+    mostrarInvalido(
+        codigoInvalido
     );
-
-
-    return;
 
 }
 
 
-// ======================================
-// QR REALMENTE INVÁLIDO
-// ======================================
-
-const codigoInvalido =
-    respuesta.codigo ||
-    document.getElementById(
-        "codigo"
-    ).innerText;
-
-
-document.getElementById(
-    "estado"
-).innerText =
-    "QR no válido";
-
-
-document.getElementById(
-    "estado"
-).className =
-    "estado error";
-
-
-mostrarInvalido(
-    codigoInvalido
-);
-
-
 // ==========================================
-// ENVIAR A APPS SCRIPT
+// ENVIAR CÓDIGO A APPS SCRIPT
 // ==========================================
 
 function enviarCodigo(
     codigo
 ) {
 
-    // Crear nombre único de callback
+    // --------------------------------------
+    // Crear callback único
+    // --------------------------------------
 
     const callbackName =
         "respuestaQR_" +
         Date.now() +
         "_" +
         Math.floor(
-            Math.random() *
-            100000
+            Math.random() * 100000
         );
 
 
-    // Registrar callback
+    // --------------------------------------
+    // Crear función de callback
+    // --------------------------------------
 
     window[callbackName] =
         function(respuesta) {
 
             procesarRespuestaQR(
-                respuesta
+                respuesta,
+                callbackName
             );
 
         };
 
 
-    procesarRespuestaQR
-        ._callbackActivo =
-        callbackName;
-
-
+    // --------------------------------------
     // Crear URL
+    // --------------------------------------
 
     const url =
         APPS_SCRIPT_URL +
@@ -1480,7 +1515,9 @@ function enviarCodigo(
         Date.now();
 
 
-    // Crear script dinámico
+    // --------------------------------------
+    // Crear script
+    // --------------------------------------
 
     const script =
         document.createElement(
@@ -1496,7 +1533,9 @@ function enviarCodigo(
         true;
 
 
-    // Error de carga
+    // --------------------------------------
+    // Error de conexión
+    // --------------------------------------
 
     script.onerror =
         function() {
@@ -1535,16 +1574,18 @@ function enviarCodigo(
         };
 
 
-    // Agregar a la página
+    // --------------------------------------
+    // Agregar script
+    // --------------------------------------
 
     document.body.appendChild(
         script
     );
 
 
-    // Seguridad:
-    // si no recibimos respuesta
-    // en 8 segundos, mostrar error.
+    // --------------------------------------
+    // Tiempo máximo de espera
+    // --------------------------------------
 
     temporizadorRespuesta =
         setTimeout(
@@ -1572,7 +1613,9 @@ function enviarCodigo(
         );
 
 
-    // Limpiar script después
+    // --------------------------------------
+    // Limpiar script
+    // --------------------------------------
 
     setTimeout(
         function() {
@@ -1602,14 +1645,18 @@ function codigoLeido(
     codigo
 ) {
 
-    if (procesando) {
+    if (
+        procesando
+    ) {
 
         return;
 
     }
 
 
-    if (!usuarioActual) {
+    if (
+        !usuarioActual
+    ) {
 
         alert(
             "Primero debe seleccionar un usuario"
@@ -1624,7 +1671,9 @@ function codigoLeido(
         codigo.trim();
 
 
-    if (!codigo) {
+    if (
+        !codigo
+    ) {
 
         return;
 
@@ -1632,7 +1681,7 @@ function codigoLeido(
 
 
     // ======================================
-    // VERIFICAR BLOQUEO LOCAL
+    // BLOQUEO LOCAL
     // ======================================
 
     const tiempoRestante =
@@ -1667,36 +1716,11 @@ function codigoLeido(
             "estado error";
 
 
-        document.getElementById(
-            "codigoInvalido"
-        ).innerText =
-            codigo;
-
-
-        document.getElementById(
-            "mensajeInvalido"
-        ).style.display =
-            "flex";
-
-
-        vibrarError();
-
-
-        setTimeout(
-            function() {
-
-                document.getElementById(
-                    "mensajeInvalido"
-                ).style.display =
-                    "none";
-
-
-                procesando =
-                    false;
-
-
-            },
-            1800
+        mostrarDuplicado(
+            codigo,
+            Math.ceil(
+                tiempoRestante / 1000
+            )
         );
 
 
@@ -1706,7 +1730,7 @@ function codigoLeido(
 
 
     // ======================================
-    // PREPARAR REGISTRO
+    // PREPARAR ENVÍO
     // ======================================
 
     procesando =
@@ -1732,7 +1756,7 @@ function codigoLeido(
 
 
     // ======================================
-    // ENVIAR AL SERVIDOR
+    // ENVIAR
     // ======================================
 
     enviarCodigo(
@@ -1743,7 +1767,7 @@ function codigoLeido(
 
 
 // ==========================================
-// CREAR LECTOR
+// CREAR LECTOR QR
 // ==========================================
 
 const scanner =
@@ -1780,8 +1804,8 @@ scanner.render(
 
     function(error) {
 
-        // Los errores normales
-        // de búsqueda se ignoran.
+        // Errores normales de búsqueda.
+        // Se ignoran.
 
     }
 
