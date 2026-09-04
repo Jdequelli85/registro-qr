@@ -21,149 +21,104 @@
 }
 
 body {
-
     margin: 0;
-
     background: #111827;
-
     color: white;
-
     font-family: Arial, sans-serif;
-
 }
-
-
-/* =========================================
-   CONTENEDOR PRINCIPAL
-========================================= */
 
 .contenedor {
-
     width: 100%;
-
     max-width: 500px;
-
     margin: auto;
-
     padding: 20px;
-
     text-align: center;
-
 }
-
 
 h1 {
-
     margin: 10px 0 15px;
-
 }
-
 
 /* =========================================
    USUARIO
 ========================================= */
 
 .usuario {
-
     font-size: 18px;
-
-    margin-bottom: 15px;
-
+    margin-bottom: 8px;
 }
 
+.botonCambiar {
+    border: none;
+    background: #374151;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.botonCambiar:active {
+    transform: scale(0.97);
+}
 
 /* =========================================
    CONTADOR
 ========================================= */
 
 .contador {
-
     background: #1f2937;
-
     border-radius: 12px;
-
     padding: 10px;
-
     margin-bottom: 15px;
-
     font-size: 18px;
-
 }
 
 .contadorNumero {
-
     font-size: 28px;
-
     font-weight: bold;
-
 }
-
 
 /* =========================================
    LECTOR
 ========================================= */
 
 #reader {
-
     width: 100%;
-
     background: white;
-
     border-radius: 15px;
-
     overflow: hidden;
-
 }
-
 
 /* =========================================
    RESULTADO
 ========================================= */
 
 .resultado {
-
     margin-top: 20px;
-
     padding: 20px;
-
     background: #1f2937;
-
     border-radius: 15px;
-
 }
-
 
 .codigo {
-
     font-size: 36px;
-
     font-weight: bold;
-
     margin: 10px 0;
-
 }
-
 
 .estado {
-
     font-size: 18px;
-
 }
-
 
 .ok {
-
     color: #4ade80;
-
 }
-
 
 .error {
-
     color: #f87171;
-
 }
-
 
 /* =========================================
    PANTALLA DE SELECCIÓN DE USUARIO
@@ -174,11 +129,9 @@ h1 {
     position: fixed;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
-
     height: 100%;
 
     background: #111827;
@@ -188,29 +141,20 @@ h1 {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
-
 }
-
 
 .usuarioBox {
 
     width: 90%;
-
     max-width: 400px;
 
     text-align: center;
-
 }
-
 
 .usuarioBox h2 {
-
     margin-bottom: 30px;
-
 }
-
 
 .botonUsuario {
 
@@ -231,16 +175,11 @@ h1 {
     font-size: 20px;
 
     font-weight: bold;
-
 }
-
 
 .botonUsuario:active {
-
     transform: scale(0.98);
-
 }
-
 
 /* =========================================
    PANTALLA REGISTRADO
@@ -251,11 +190,9 @@ h1 {
     position: fixed;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
-
     height: 100%;
 
     background: rgba(17, 24, 39, 0.97);
@@ -265,33 +202,23 @@ h1 {
     display: none;
 
     justify-content: center;
-
     align-items: center;
-
 }
-
 
 .registroBox {
 
     width: 90%;
-
     max-width: 450px;
 
     text-align: center;
 
     padding: 30px;
-
 }
-
 
 .iconoRegistro {
-
     font-size: 80px;
-
     margin-bottom: 10px;
-
 }
-
 
 .tituloRegistro {
 
@@ -302,9 +229,7 @@ h1 {
     color: #4ade80;
 
     margin-bottom: 20px;
-
 }
-
 
 .codigoRegistro {
 
@@ -313,27 +238,21 @@ h1 {
     font-weight: bold;
 
     margin-bottom: 15px;
-
 }
-
 
 .usuarioRegistro {
 
     font-size: 20px;
 
     margin-bottom: 25px;
-
 }
-
 
 .continuarRegistro {
 
     font-size: 17px;
 
     color: #d1d5db;
-
 }
-
 
 /* =========================================
    PANTALLA QR BLOQUEADO
@@ -344,11 +263,9 @@ h1 {
     position: fixed;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
-
     height: 100%;
 
     background: rgba(17, 24, 39, 0.97);
@@ -358,33 +275,25 @@ h1 {
     display: none;
 
     justify-content: center;
-
     align-items: center;
-
 }
-
 
 .bloqueadoBox {
 
     width: 90%;
-
     max-width: 450px;
 
     text-align: center;
 
     padding: 30px;
-
 }
-
 
 .iconoBloqueado {
 
     font-size: 75px;
 
     margin-bottom: 10px;
-
 }
-
 
 .tituloBloqueado {
 
@@ -395,9 +304,7 @@ h1 {
     color: #f87171;
 
     margin-bottom: 20px;
-
 }
-
 
 .codigoBloqueado {
 
@@ -406,9 +313,7 @@ h1 {
     font-weight: bold;
 
     margin-bottom: 15px;
-
 }
-
 
 .tiempoBloqueado {
 
@@ -417,22 +322,18 @@ h1 {
     color: #d1d5db;
 
     margin-bottom: 25px;
-
 }
-
 
 .continuarBloqueado {
 
     font-size: 17px;
 
     color: #9ca3af;
-
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -449,7 +350,6 @@ h1 {
             ¿Quién está utilizando este teléfono?
         </h2>
 
-
         <button
             class="botonUsuario"
             onclick="seleccionarUsuario('Julio')">
@@ -457,7 +357,6 @@ h1 {
             Julio
 
         </button>
-
 
         <button
             class="botonUsuario"
@@ -470,7 +369,6 @@ h1 {
     </div>
 
 </div>
-
 
 
 <!-- =========================================
@@ -500,15 +398,12 @@ h1 {
         </div>
 
         <div class="continuarRegistro">
-
             Listo para el siguiente código...
-
         </div>
 
     </div>
 
 </div>
-
 
 
 <!-- =========================================
@@ -538,15 +433,12 @@ h1 {
         </div>
 
         <div class="continuarBloqueado">
-
             Puede continuar con otro código.
-
         </div>
 
     </div>
 
 </div>
-
 
 
 <!-- =========================================
@@ -569,6 +461,17 @@ h1 {
         </strong>
 
     </div>
+
+
+    <!-- BOTÓN CAMBIAR USUARIO -->
+
+    <button
+        class="botonCambiar"
+        onclick="cambiarUsuario()">
+
+        👤 Cambiar usuario
+
+    </button>
 
 
     <div class="contador">
@@ -595,7 +498,6 @@ h1 {
             Última lectura
         </div>
 
-
         <div
             id="codigo"
             class="codigo">
@@ -603,7 +505,6 @@ h1 {
             —
 
         </div>
-
 
         <div
             id="estado"
@@ -616,7 +517,6 @@ h1 {
     </div>
 
 </div>
-
 
 
 <script>
@@ -633,8 +533,6 @@ const APPS_SCRIPT_URL =
 // ==========================================
 // CONFIGURACIÓN
 // ==========================================
-
-// Tiempo de bloqueo por código
 
 const TIEMPO_BLOQUEO =
     5 * 60 * 1000;
@@ -660,18 +558,15 @@ window.onload = function() {
     const usuarioGuardado =
         localStorage.getItem("usuarioQR");
 
-
     if (usuarioGuardado) {
 
         usuarioActual =
             usuarioGuardado;
 
-
         document.getElementById(
             "usuarioActual"
         ).innerText =
             usuarioActual;
-
 
         document.getElementById(
             "pantallaUsuario"
@@ -692,23 +587,37 @@ function seleccionarUsuario(usuario) {
     usuarioActual =
         usuario;
 
-
     localStorage.setItem(
         "usuarioQR",
         usuario
     );
-
 
     document.getElementById(
         "usuarioActual"
     ).innerText =
         usuario;
 
-
     document.getElementById(
         "pantallaUsuario"
     ).style.display =
         "none";
+
+}
+
+
+// ==========================================
+// CAMBIAR USUARIO
+// ==========================================
+
+function cambiarUsuario() {
+
+    // Mostrar nuevamente la pantalla
+    // de selección de usuario
+
+    document.getElementById(
+        "pantallaUsuario"
+    ).style.display =
+        "flex";
 
 }
 
@@ -745,10 +654,8 @@ function guardarBloqueo(codigo) {
     const bloqueos =
         obtenerBloqueos();
 
-
     bloqueos[codigo] =
         Date.now();
-
 
     localStorage.setItem(
         "bloqueosQR",
@@ -759,7 +666,7 @@ function guardarBloqueo(codigo) {
 
 
 // ==========================================
-// VERIFICAR SI ESTÁ BLOQUEADO
+// VERIFICAR BLOQUEO
 // ==========================================
 
 function obtenerTiempoRestante(codigo) {
@@ -767,10 +674,8 @@ function obtenerTiempoRestante(codigo) {
     const bloqueos =
         obtenerBloqueos();
 
-
     const momento =
         bloqueos[codigo];
-
 
     if (!momento) {
 
@@ -778,30 +683,25 @@ function obtenerTiempoRestante(codigo) {
 
     }
 
-
     const transcurrido =
         Date.now() - momento;
 
-
     const restante =
-        TIEMPO_BLOQUEO - transcurrido;
-
+        TIEMPO_BLOQUEO -
+        transcurrido;
 
     if (restante <= 0) {
 
         delete bloqueos[codigo];
-
 
         localStorage.setItem(
             "bloqueosQR",
             JSON.stringify(bloqueos)
         );
 
-
         return 0;
 
     }
-
 
     return restante;
 
@@ -812,23 +712,22 @@ function obtenerTiempoRestante(codigo) {
 // FORMATEAR TIEMPO
 // ==========================================
 
-function formatearTiempo(milisegundos) {
+function formatearTiempo(
+    milisegundos
+) {
 
     const segundos =
         Math.ceil(
             milisegundos / 1000
         );
 
-
     const minutos =
         Math.floor(
             segundos / 60
         );
 
-
     const segundosRestantes =
         segundos % 60;
-
 
     return
         minutos +
@@ -853,39 +752,30 @@ function reproducirSonido() {
                 window.webkitAudioContext
             )();
 
-
         const oscilador =
             contexto.createOscillator();
-
 
         const ganancia =
             contexto.createGain();
 
-
         oscilador.type =
             "sine";
-
 
         oscilador.frequency.value =
             880;
 
-
         ganancia.gain.value =
             0.15;
-
 
         oscilador.connect(
             ganancia
         );
 
-
         ganancia.connect(
             contexto.destination
         );
 
-
         oscilador.start();
-
 
         oscilador.stop(
             contexto.currentTime +
@@ -936,24 +826,20 @@ function mostrarRegistrado(
     ).innerText =
         codigo;
 
-
     document.getElementById(
         "usuarioRegistro"
     ).innerText =
         "Usuario: " +
         usuarioActual;
 
-
     document.getElementById(
         "mensajeRegistro"
     ).style.display =
         "flex";
 
-
     reproducirSonido();
 
     vibrar();
-
 
     setTimeout(
         function() {
@@ -963,10 +849,8 @@ function mostrarRegistrado(
             ).style.display =
                 "none";
 
-
             procesando =
                 false;
-
 
         },
         1500
@@ -989,7 +873,6 @@ function mostrarBloqueado(
     ).innerText =
         codigo;
 
-
     document.getElementById(
         "tiempoBloqueado"
     ).innerText =
@@ -998,15 +881,12 @@ function mostrarBloqueado(
             restante
         );
 
-
     document.getElementById(
         "mensajeBloqueado"
     ).style.display =
         "flex";
 
-
     vibrar();
-
 
     setTimeout(
         function() {
@@ -1016,10 +896,8 @@ function mostrarBloqueado(
             ).style.display =
                 "none";
 
-
             procesando =
                 false;
-
 
         },
         1800
@@ -1034,19 +912,11 @@ function mostrarBloqueado(
 
 function codigoLeido(codigo) {
 
-
-    // Evitar lecturas simultáneas
-
     if (procesando) {
 
         return;
 
     }
-
-
-    // ======================================
-    // VERIFICAR USUARIO
-    // ======================================
 
     if (!usuarioActual) {
 
@@ -1058,14 +928,8 @@ function codigoLeido(codigo) {
 
     }
 
-
-    // ======================================
-    // LIMPIAR CÓDIGO
-    // ======================================
-
     codigo =
         codigo.trim();
-
 
     if (!codigo) {
 
@@ -1073,16 +937,10 @@ function codigoLeido(codigo) {
 
     }
 
-
-    // ======================================
-    // VERIFICAR BLOQUEO DE 5 MINUTOS
-    // ======================================
-
     const tiempoRestante =
         obtenerTiempoRestante(
             codigo
         );
-
 
     if (
         tiempoRestante > 0
@@ -1091,37 +949,27 @@ function codigoLeido(codigo) {
         procesando =
             true;
 
-
         mostrarBloqueado(
             codigo,
             tiempoRestante
         );
 
-
         return;
 
     }
 
-
     procesando =
         true;
-
-
-    // ======================================
-    // MOSTRAR CÓDIGO
-    // ======================================
 
     document.getElementById(
         "codigo"
     ).innerText =
         codigo;
 
-
     document.getElementById(
         "estado"
     ).innerText =
         "Registrando...";
-
 
     document.getElementById(
         "estado"
@@ -1154,7 +1002,6 @@ function codigoLeido(codigo) {
     const imagenEnvio =
         new Image();
 
-
     imagenEnvio.src =
         url;
 
@@ -1169,11 +1016,10 @@ function codigoLeido(codigo) {
 
 
     // ======================================
-    // AUMENTAR CONTADOR
+    // CONTADOR
     // ======================================
 
     cantidadRegistros++;
-
 
     document.getElementById(
         "contador"
@@ -1182,14 +1028,13 @@ function codigoLeido(codigo) {
 
 
     // ======================================
-    // ACTUALIZAR ESTADO
+    // ESTADO
     // ======================================
 
     document.getElementById(
         "estado"
     ).innerText =
         "✓ Registrado";
-
 
     document.getElementById(
         "estado"
@@ -1198,7 +1043,7 @@ function codigoLeido(codigo) {
 
 
     // ======================================
-    // MOSTRAR CONFIRMACIÓN
+    // CONFIRMACIÓN
     // ======================================
 
     mostrarRegistrado(
@@ -1254,7 +1099,6 @@ scanner.render(
 );
 
 </script>
-
 
 </body>
 
