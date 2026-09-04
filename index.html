@@ -25,22 +25,35 @@
 }
 
 body {
+
     margin: 0;
+
     background: #111827;
+
     color: white;
+
     font-family: Arial, sans-serif;
+
 }
 
 .contenedor {
+
     width: 100%;
+
     max-width: 500px;
+
     margin: auto;
+
     padding: 20px;
+
     text-align: center;
+
 }
 
 h1 {
+
     margin: 10px 0 15px;
+
 }
 
 
@@ -49,23 +62,37 @@ h1 {
 ========================================= */
 
 .usuario {
+
     font-size: 18px;
+
     margin-bottom: 8px;
+
 }
 
 .botonCambiar {
+
     border: none;
+
     background: #374151;
+
     color: white;
+
     padding: 8px 15px;
+
     border-radius: 8px;
+
     font-size: 14px;
+
     cursor: pointer;
+
     margin-bottom: 15px;
+
 }
 
 .botonCambiar:active {
+
     transform: scale(0.97);
+
 }
 
 
@@ -74,16 +101,25 @@ h1 {
 ========================================= */
 
 .contador {
+
     background: #1f2937;
+
     border-radius: 12px;
+
     padding: 10px;
+
     margin-bottom: 15px;
+
     font-size: 18px;
+
 }
 
 .contadorNumero {
+
     font-size: 28px;
+
     font-weight: bold;
+
 }
 
 
@@ -92,40 +128,66 @@ h1 {
 ========================================= */
 
 #reader {
+
     width: 100%;
+
     background: white;
+
     border-radius: 15px;
+
     overflow: hidden;
+
 }
 
 
 /* =========================================
-   RESULTADO INFERIOR
+   RESULTADO
 ========================================= */
 
 .resultado {
+
     margin-top: 20px;
+
     padding: 20px;
+
     background: #1f2937;
+
     border-radius: 15px;
+
 }
 
 .codigo {
+
     font-size: 36px;
+
     font-weight: bold;
+
     margin: 10px 0;
+
 }
 
 .estado {
+
     font-size: 18px;
+
 }
 
 .ok {
+
     color: #4ade80;
+
 }
 
 .error {
+
     color: #f87171;
+
+}
+
+.warning {
+
+    color: #fbbf24;
+
 }
 
 
@@ -134,46 +196,87 @@ h1 {
 ========================================= */
 
 #pantallaUsuario {
+
     position: fixed;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 100%;
+
     background: #111827;
+
     z-index: 1000;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
 }
 
 .usuarioBox {
+
     width: 90%;
+
     max-width: 400px;
+
     text-align: center;
+
 }
 
 .usuarioBox h2 {
+
     margin-bottom: 30px;
+
+}
+
+.listaUsuarios {
+
+    width: 100%;
+
 }
 
 .botonUsuario {
+
     width: 100%;
+
     padding: 18px;
+
     margin: 10px 0;
 
     border: none;
+
     border-radius: 12px;
 
     background: #2563eb;
+
     color: white;
 
     font-size: 20px;
+
     font-weight: bold;
+
 }
 
 .botonUsuario:active {
+
     transform: scale(0.98);
+
+}
+
+.mensajeUsuarios {
+
+    color: #9ca3af;
+
+    margin-top: 20px;
+
+    font-size: 16px;
+
 }
 
 
@@ -182,11 +285,15 @@ h1 {
 ========================================= */
 
 #mensajeRegistro {
+
     position: fixed;
+
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     background: rgba(17, 24, 39, 0.97);
@@ -196,111 +303,160 @@ h1 {
     display: none;
 
     justify-content: center;
+
     align-items: center;
+
 }
 
 .registroBox {
+
     width: 90%;
+
     max-width: 450px;
+
     text-align: center;
+
     padding: 30px;
+
 }
 
 .iconoRegistro {
+
     font-size: 80px;
+
     margin-bottom: 10px;
+
 }
 
 .tituloRegistro {
+
     font-size: 42px;
+
     font-weight: bold;
+
     color: #4ade80;
+
     margin-bottom: 20px;
+
 }
 
 .codigoRegistro {
+
     font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
 
-.usuarioRegistro {
-    font-size: 20px;
-    margin-bottom: 25px;
-}
-
-.continuarRegistro {
-    font-size: 17px;
-    color: #d1d5db;
-}
-
-
-/* =========================================
-   PANTALLA YA REGISTRADO
-========================================= */
-
-#mensajeDuplicado {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 2000;
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-}
-
-.duplicadoBox {
-    width: 90%;
-    max-width: 450px;
-
-    text-align: center;
-
-    padding: 30px;
-}
-
-.iconoDuplicado {
-    font-size: 75px;
-    margin-bottom: 10px;
-}
-
-.tituloDuplicado {
-    font-size: 36px;
-    font-weight: bold;
-
-    color: #fbbf24;
-
-    margin-bottom: 20px;
-}
-
-.codigoDuplicado {
-    font-size: 38px;
     font-weight: bold;
 
     margin-bottom: 15px;
 
     word-break: break-word;
+
+}
+
+.usuarioRegistro {
+
+    font-size: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+.continuarRegistro {
+
+    font-size: 17px;
+
+    color: #d1d5db;
+
+}
+
+
+/* =========================================
+   PANTALLA DUPLICADO
+========================================= */
+
+#mensajeDuplicado {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.97);
+
+    z-index: 2000;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.duplicadoBox {
+
+    width: 90%;
+
+    max-width: 450px;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+.iconoDuplicado {
+
+    font-size: 75px;
+
+    margin-bottom: 10px;
+
+}
+
+.tituloDuplicado {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: #fbbf24;
+
+    margin-bottom: 20px;
+
+}
+
+.codigoDuplicado {
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+    word-break: break-word;
+
 }
 
 .tiempoDuplicado {
+
     font-size: 19px;
 
     color: #d1d5db;
 
     margin-bottom: 25px;
+
 }
 
 .continuarDuplicado {
+
     font-size: 17px;
 
     color: #9ca3af;
+
 }
 
 
@@ -309,11 +465,15 @@ h1 {
 ========================================= */
 
 #mensajeInvalido {
+
     position: fixed;
+
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     background: rgba(17, 24, 39, 0.97);
@@ -323,66 +483,88 @@ h1 {
     display: none;
 
     justify-content: center;
+
     align-items: center;
+
 }
 
 .invalidoBox {
+
     width: 90%;
+
     max-width: 450px;
 
     text-align: center;
 
     padding: 30px;
+
 }
 
 .iconoInvalido {
+
     font-size: 75px;
+
     margin-bottom: 10px;
+
 }
 
 .tituloInvalido {
+
     font-size: 36px;
+
     font-weight: bold;
 
     color: #f87171;
 
     margin-bottom: 20px;
+
 }
 
 .codigoInvalido {
+
     font-size: 30px;
+
     font-weight: bold;
 
     margin-bottom: 15px;
 
     word-break: break-word;
+
 }
 
 .detalleInvalido {
+
     font-size: 18px;
 
     color: #d1d5db;
 
     margin-bottom: 25px;
+
 }
 
 .continuarInvalido {
+
     font-size: 17px;
 
     color: #9ca3af;
+
 }
 
 
 /* =========================================
-   PANTALLA ERROR CONEXIÓN
+   PANTALLA ERROR DE CONEXIÓN
 ========================================= */
 
 #mensajeConexion {
+
     position: fixed;
+
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     background: rgba(17, 24, 39, 0.97);
@@ -392,33 +574,43 @@ h1 {
     display: none;
 
     justify-content: center;
+
     align-items: center;
+
 }
 
 .conexionBox {
+
     width: 90%;
+
     max-width: 450px;
 
     text-align: center;
 
     padding: 30px;
+
 }
 
 .tituloConexion {
+
     font-size: 36px;
+
     font-weight: bold;
 
     color: #fbbf24;
 
     margin-bottom: 20px;
+
 }
 
 .detalleConexion {
+
     font-size: 19px;
 
     color: #d1d5db;
 
     margin-bottom: 25px;
+
 }
 
 </style>
@@ -441,21 +633,15 @@ h1 {
             ¿Quién está utilizando este teléfono?
         </h2>
 
-        <button
-            class="botonUsuario"
-            onclick="seleccionarUsuario('Julio')">
+        <div
+            id="listaUsuarios"
+            class="listaUsuarios">
 
-            Julio
+            <div class="mensajeUsuarios">
+                Cargando usuarios...
+            </div>
 
-        </button>
-
-        <button
-            class="botonUsuario"
-            onclick="seleccionarUsuario('Nicolás')">
-
-            Nicolás
-
-        </button>
+        </div>
 
     </div>
 
@@ -498,7 +684,7 @@ h1 {
 
 
 <!-- =========================================
-     PANTALLA YA REGISTRADO
+     PANTALLA DUPLICADO
 ========================================= -->
 
 <div id="mensajeDuplicado">
@@ -568,7 +754,7 @@ h1 {
 
 
 <!-- =========================================
-     PANTALLA ERROR DE CONEXIÓN
+     ERROR DE CONEXIÓN
 ========================================= -->
 
 <div id="mensajeConexion">
@@ -692,23 +878,29 @@ const TIEMPO_BLOQUEO =
 // VARIABLES
 // ==========================================
 
-let usuarioActual = null;
+let usuarioActual =
+    null;
 
-let procesando = false;
+let procesando =
+    false;
 
-let cantidadRegistros = 0;
+let cantidadRegistros =
+    0;
 
-let temporizadorRespuesta = null;
+let temporizadorRespuesta =
+    null;
 
 
 // ==========================================
-// CARGAR USUARIO
+// CARGAR USUARIO GUARDADO
 // ==========================================
 
 window.onload = function() {
 
     const usuarioGuardado =
-        localStorage.getItem("usuarioQR");
+        localStorage.getItem(
+            "usuarioQR"
+        );
 
 
     if (usuarioGuardado) {
@@ -730,14 +922,271 @@ window.onload = function() {
 
     }
 
+
+    cargarUsuarios();
+
 };
+
+
+// ==========================================
+// CARGAR USUARIOS DESDE APPS SCRIPT
+// ==========================================
+
+function cargarUsuarios() {
+
+    const callbackName =
+        "usuariosQR_" +
+        Date.now() +
+        "_" +
+        Math.floor(
+            Math.random() * 100000
+        );
+
+
+    window[callbackName] =
+        function(respuesta) {
+
+            procesarUsuarios(
+                respuesta,
+                callbackName
+            );
+
+        };
+
+
+    const url =
+        APPS_SCRIPT_URL +
+        "?accion=usuarios" +
+        "&callback=" +
+        encodeURIComponent(
+            callbackName
+        ) +
+        "&t=" +
+        Date.now();
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    script.src =
+        url;
+
+    script.async =
+        true;
+
+
+    script.onerror =
+        function() {
+
+            limpiarCallback(
+                callbackName
+            );
+
+
+            document.getElementById(
+                "listaUsuarios"
+            ).innerHTML =
+                '<div class="mensajeUsuarios">' +
+                'No se pudieron cargar los usuarios.' +
+                '<br><br>' +
+                'Compruebe la conexión.' +
+                '</div>';
+
+        };
+
+
+    document.body.appendChild(
+        script
+    );
+
+
+    setTimeout(
+        function() {
+
+            limpiarScript(
+                script
+            );
+
+
+        },
+        10000
+    );
+
+}
+
+
+// ==========================================
+// PROCESAR USUARIOS
+// ==========================================
+
+function procesarUsuarios(
+    respuesta,
+    callbackName
+) {
+
+    limpiarCallback(
+        callbackName
+    );
+
+
+    if (
+        !respuesta ||
+        respuesta.ok !== true ||
+        !Array.isArray(
+            respuesta.usuarios
+        )
+    ) {
+
+        document.getElementById(
+            "listaUsuarios"
+        ).innerHTML =
+            '<div class="mensajeUsuarios">' +
+            'No se pudieron cargar los usuarios.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    const lista =
+        document.getElementById(
+            "listaUsuarios"
+        );
+
+
+    lista.innerHTML =
+        "";
+
+
+    if (
+        respuesta.usuarios.length === 0
+    ) {
+
+        lista.innerHTML =
+            '<div class="mensajeUsuarios">' +
+            'No hay usuarios activos.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    respuesta.usuarios.forEach(
+        function(usuario) {
+
+            const boton =
+                document.createElement(
+                    "button"
+                );
+
+
+            boton.className =
+                "botonUsuario";
+
+
+            boton.innerText =
+                usuario;
+
+
+            boton.onclick =
+                function() {
+
+                    seleccionarUsuario(
+                        usuario
+                    );
+
+                };
+
+
+            lista.appendChild(
+                boton
+            );
+
+        }
+    );
+
+
+    // ------------------------------------------------
+    // Si hay usuario guardado y sigue activo,
+    // ocultar selección.
+    // ------------------------------------------------
+
+    if (
+        usuarioActual &&
+        respuesta.usuarios.indexOf(
+            usuarioActual
+        ) !== -1
+    ) {
+
+        document.getElementById(
+            "pantallaUsuario"
+        ).style.display =
+            "none";
+
+    }
+
+}
+
+
+// ==========================================
+// LIMPIAR CALLBACK
+// ==========================================
+
+function limpiarCallback(
+    callbackName
+) {
+
+    try {
+
+        delete window[
+            callbackName
+        ];
+
+    } catch (error) {
+
+        window[
+            callbackName
+        ] = undefined;
+
+    }
+
+}
+
+
+// ==========================================
+// LIMPIAR SCRIPT
+// ==========================================
+
+function limpiarScript(
+    script
+) {
+
+    if (
+        script &&
+        script.parentNode
+    ) {
+
+        script.parentNode.removeChild(
+            script
+        );
+
+    }
+
+}
 
 
 // ==========================================
 // SELECCIONAR USUARIO
 // ==========================================
 
-function seleccionarUsuario(usuario) {
+function seleccionarUsuario(
+    usuario
+) {
 
     usuarioActual =
         usuario;
@@ -769,10 +1218,63 @@ function seleccionarUsuario(usuario) {
 
 function cambiarUsuario() {
 
+    // Ocultar posibles mensajes
+
+    cerrarMensajes();
+
+
+    // Mostrar pantalla
+
     document.getElementById(
         "pantallaUsuario"
     ).style.display =
         "flex";
+
+
+    // Recargar usuarios
+
+    cargarUsuarios();
+
+}
+
+
+// ==========================================
+// CERRAR MENSAJES
+// ==========================================
+
+function cerrarMensajes() {
+
+    const ids = [
+
+        "mensajeRegistro",
+
+        "mensajeDuplicado",
+
+        "mensajeInvalido",
+
+        "mensajeConexion"
+
+    ];
+
+
+    ids.forEach(
+        function(id) {
+
+            const elemento =
+                document.getElementById(
+                    id
+                );
+
+
+            if (elemento) {
+
+                elemento.style.display =
+                    "none";
+
+            }
+
+        }
+    );
 
 }
 
@@ -804,7 +1306,9 @@ function obtenerBloqueos() {
 // GUARDAR BLOQUEO LOCAL
 // ==========================================
 
-function guardarBloqueo(codigo) {
+function guardarBloqueo(
+    codigo
+) {
 
     const bloqueos =
         obtenerBloqueos();
@@ -828,7 +1332,9 @@ function guardarBloqueo(codigo) {
 // OBTENER TIEMPO RESTANTE LOCAL
 // ==========================================
 
-function obtenerTiempoRestante(codigo) {
+function obtenerTiempoRestante(
+    codigo
+) {
 
     const bloqueos =
         obtenerBloqueos();
@@ -845,17 +1351,17 @@ function obtenerTiempoRestante(codigo) {
     }
 
 
-    const transcurrido =
-        Date.now() -
-        momento;
-
-
     const restante =
         TIEMPO_BLOQUEO -
-        transcurrido;
+        (
+            Date.now() -
+            momento
+        );
 
 
-    if (restante <= 0) {
+    if (
+        restante <= 0
+    ) {
 
         delete bloqueos[codigo];
 
@@ -1264,15 +1770,14 @@ function mostrarErrorConexion() {
 
 
 // ==========================================
-// PROCESAR RESPUESTA DE APPS SCRIPT
+// PROCESAR RESPUESTA QR
 // ==========================================
 
 function procesarRespuestaQR(
     respuesta,
-    callbackName
+    callbackName,
+    script
 ) {
-
-    // Cancelar temporizador
 
     if (
         temporizadorRespuesta
@@ -1288,36 +1793,24 @@ function procesarRespuestaQR(
     }
 
 
-    // Eliminar callback
-
-    if (
+    limpiarCallback(
         callbackName
-    ) {
+    );
 
-        try {
 
-            delete window[
-                callbackName
-            ];
-
-        } catch (error) {
-
-            window[
-                callbackName
-            ] = undefined;
-
-        }
-
-    }
+    limpiarScript(
+        script
+    );
 
 
     // ======================================
-    // VERIFICAR RESPUESTA
+    // RESPUESTA NO VÁLIDA
     // ======================================
 
     if (
         !respuesta ||
-        typeof respuesta.ok === "undefined"
+        typeof respuesta.ok ===
+        "undefined"
     ) {
 
         mostrarErrorConexion();
@@ -1340,16 +1833,13 @@ function procesarRespuestaQR(
             respuesta.codigo;
 
 
-        // Guardar bloqueo local
-        // solamente después de que
-        // Apps Script confirmó el registro.
+        // Bloqueo local solamente después
+        // de confirmar que el servidor guardó.
 
         guardarBloqueo(
             codigo
         );
 
-
-        // Aumentar contador
 
         cantidadRegistros++;
 
@@ -1358,6 +1848,12 @@ function procesarRespuestaQR(
             "contador"
         ).innerText =
             cantidadRegistros;
+
+
+        document.getElementById(
+            "codigo"
+        ).innerText =
+            codigo;
 
 
         document.getElementById(
@@ -1383,11 +1879,12 @@ function procesarRespuestaQR(
 
 
     // ======================================
-    // QR DUPLICADO
+    // DUPLICADO
     // ======================================
 
     if (
-        respuesta.tipo === "duplicado"
+        respuesta.tipo ===
+        "duplicado"
     ) {
 
         const codigo =
@@ -1405,6 +1902,12 @@ function procesarRespuestaQR(
 
 
         document.getElementById(
+            "codigo"
+        ).innerText =
+            codigo;
+
+
+        document.getElementById(
             "estado"
         ).innerText =
             "Ya registrado";
@@ -1413,7 +1916,7 @@ function procesarRespuestaQR(
         document.getElementById(
             "estado"
         ).className =
-            "estado error";
+            "estado warning";
 
 
         mostrarDuplicado(
@@ -1431,28 +1934,45 @@ function procesarRespuestaQR(
     // QR INVÁLIDO
     // ======================================
 
-    const codigoInvalido =
-        respuesta.codigo ||
+    if (
+        respuesta.tipo ===
+        "invalido"
+    ) {
+
+        const codigo =
+            respuesta.codigo ||
+            document.getElementById(
+                "codigo"
+            ).innerText;
+
+
         document.getElementById(
-            "codigo"
-        ).innerText;
+            "estado"
+        ).innerText =
+            "QR no válido";
 
 
-    document.getElementById(
-        "estado"
-    ).innerText =
-        "QR no válido";
+        document.getElementById(
+            "estado"
+        ).className =
+            "estado error";
 
 
-    document.getElementById(
-        "estado"
-    ).className =
-        "estado error";
+        mostrarInvalido(
+            codigo
+        );
 
 
-    mostrarInvalido(
-        codigoInvalido
-    );
+        return;
+
+    }
+
+
+    // ======================================
+    // ERROR
+    // ======================================
+
+    mostrarErrorConexion();
 
 }
 
@@ -1465,10 +1985,6 @@ function enviarCodigo(
     codigo
 ) {
 
-    // --------------------------------------
-    // Crear callback único
-    // --------------------------------------
-
     const callbackName =
         "respuestaQR_" +
         Date.now() +
@@ -1478,24 +1994,23 @@ function enviarCodigo(
         );
 
 
-    // --------------------------------------
-    // Crear función de callback
-    // --------------------------------------
+    const script =
+        document.createElement(
+            "script"
+        );
+
 
     window[callbackName] =
         function(respuesta) {
 
             procesarRespuestaQR(
                 respuesta,
-                callbackName
+                callbackName,
+                script
             );
 
         };
 
-
-    // --------------------------------------
-    // Crear URL
-    // --------------------------------------
 
     const url =
         APPS_SCRIPT_URL +
@@ -1515,16 +2030,6 @@ function enviarCodigo(
         Date.now();
 
 
-    // --------------------------------------
-    // Crear script
-    // --------------------------------------
-
-    const script =
-        document.createElement(
-            "script"
-        );
-
-
     script.src =
         url;
 
@@ -1532,10 +2037,6 @@ function enviarCodigo(
     script.async =
         true;
 
-
-    // --------------------------------------
-    // Error de conexión
-    // --------------------------------------
 
     script.onerror =
         function() {
@@ -1554,19 +2055,14 @@ function enviarCodigo(
             }
 
 
-            try {
+            limpiarCallback(
+                callbackName
+            );
 
-                delete window[
-                    callbackName
-                ];
 
-            } catch (error) {
-
-                window[
-                    callbackName
-                ] = undefined;
-
-            }
+            limpiarScript(
+                script
+            );
 
 
             mostrarErrorConexion();
@@ -1574,36 +2070,27 @@ function enviarCodigo(
         };
 
 
-    // --------------------------------------
-    // Agregar script
-    // --------------------------------------
-
     document.body.appendChild(
         script
     );
 
 
-    // --------------------------------------
-    // Tiempo máximo de espera
-    // --------------------------------------
-
     temporizadorRespuesta =
         setTimeout(
             function() {
 
-                try {
+                limpiarCallback(
+                    callbackName
+                );
 
-                    delete window[
-                        callbackName
-                    ];
 
-                } catch (error) {
+                limpiarScript(
+                    script
+                );
 
-                    window[
-                        callbackName
-                    ] = undefined;
 
-                }
+                temporizadorRespuesta =
+                    null;
 
 
                 mostrarErrorConexion();
@@ -1611,28 +2098,6 @@ function enviarCodigo(
             },
             8000
         );
-
-
-    // --------------------------------------
-    // Limpiar script
-    // --------------------------------------
-
-    setTimeout(
-        function() {
-
-            if (
-                script.parentNode
-            ) {
-
-                script.parentNode.removeChild(
-                    script
-                );
-
-            }
-
-        },
-        10000
-    );
 
 }
 
@@ -1671,9 +2136,7 @@ function codigoLeido(
         codigo.trim();
 
 
-    if (
-        !codigo
-    ) {
+    if (!codigo) {
 
         return;
 
@@ -1713,7 +2176,7 @@ function codigoLeido(
         document.getElementById(
             "estado"
         ).className =
-            "estado error";
+            "estado warning";
 
 
         mostrarDuplicado(
@@ -1754,10 +2217,6 @@ function codigoLeido(
     ).className =
         "estado";
 
-
-    // ======================================
-    // ENVIAR
-    // ======================================
 
     enviarCodigo(
         codigo
@@ -1804,8 +2263,8 @@ scanner.render(
 
     function(error) {
 
-        // Errores normales de búsqueda.
-        // Se ignoran.
+        // Los errores normales de búsqueda
+        // se ignoran.
 
     }
 
