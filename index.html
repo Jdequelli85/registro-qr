@@ -8,17 +8,18 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>Registro QR</title>
+<title>Registro de Muestreos</title>
 
 <script src="https://unpkg.com/html5-qrcode"
         type="text/javascript">
 </script>
 
+
 <style>
 
-/* =========================================
+/* =========================================================
    CONFIGURACIÓN GENERAL
-========================================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -57,9 +58,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    USUARIO
-========================================= */
+========================================================= */
 
 .usuario {
 
@@ -89,16 +90,10 @@ h1 {
 
 }
 
-.botonCambiar:active {
 
-    transform: scale(0.97);
-
-}
-
-
-/* =========================================
+/* =========================================================
    CONTADOR
-========================================= */
+========================================================= */
 
 .contador {
 
@@ -123,9 +118,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    LECTOR
-========================================= */
+========================================================= */
 
 #reader {
 
@@ -140,9 +135,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    RESULTADO
-========================================= */
+========================================================= */
 
 .resultado {
 
@@ -163,6 +158,8 @@ h1 {
     font-weight: bold;
 
     margin: 10px 0;
+
+    word-break: break-word;
 
 }
 
@@ -191,9 +188,9 @@ h1 {
 }
 
 
-/* =========================================
-   PANTALLA DE USUARIO
-========================================= */
+/* =========================================================
+   PANTALLA SELECCIÓN USUARIO
+========================================================= */
 
 #pantallaUsuario {
 
@@ -209,7 +206,7 @@ h1 {
 
     background: #111827;
 
-    z-index: 1000;
+    z-index: 3000;
 
     display: flex;
 
@@ -275,14 +272,253 @@ h1 {
 
     margin-top: 20px;
 
-    font-size: 16px;
+}
+
+
+/* =========================================================
+   FORMULARIO DE MUESTREO
+========================================================= */
+
+#formularioMuestreo {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.98);
+
+    z-index: 2500;
+
+    display: none;
+
+    overflow-y: auto;
+
+}
+
+.formularioBox {
+
+    width: 92%;
+
+    max-width: 460px;
+
+    margin: 20px auto;
+
+    padding: 24px;
+
+    background: #1f2937;
+
+    border-radius: 18px;
+
+}
+
+.tituloFormulario {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 20px;
 
 }
 
 
-/* =========================================
+/* =========================================================
+   INFORMACIÓN DEL PUNTO
+========================================================= */
+
+.puntoInfo {
+
+    background: #111827;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    text-align: left;
+
+}
+
+.puntoEtiqueta {
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+
+}
+
+.puntoCodigo {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-top: 4px;
+
+}
+
+.puntoNombre {
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    margin-top: 4px;
+
+}
+
+.puntoEmpresa {
+
+    font-size: 17px;
+
+    color: #d1d5db;
+
+    margin-top: 4px;
+
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.campo {
+
+    margin-bottom: 16px;
+
+    text-align: left;
+
+}
+
+.campo label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    background: white;
+
+    color: #111827;
+
+}
+
+.filaMedicion {
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+.filaMedicion input {
+
+    flex: 1;
+
+}
+
+.filaMedicion select {
+
+    width: 42%;
+
+}
+
+
+/* =========================================================
+   BOTONES FORMULARIO
+========================================================= */
+
+.botonesFormulario {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.botonCancelar {
+
+    flex: 1;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    background: #4b5563;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+.botonConfirmar {
+
+    flex: 1.5;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+.botonConfirmar:disabled {
+
+    background: #4b5563;
+
+    color: #9ca3af;
+
+}
+
+
+/* =========================================================
    PANTALLA REGISTRADO
-========================================= */
+========================================================= */
 
 #mensajeRegistro {
 
@@ -298,7 +534,7 @@ h1 {
 
     background: rgba(17, 24, 39, 0.97);
 
-    z-index: 2000;
+    z-index: 4000;
 
     display: none;
 
@@ -342,21 +578,39 @@ h1 {
 
 .codigoRegistro {
 
-    font-size: 40px;
+    font-size: 38px;
 
     font-weight: bold;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
     word-break: break-word;
 
 }
 
-.usuarioRegistro {
+.nombreRegistro {
 
     font-size: 20px;
 
-    margin-bottom: 25px;
+    margin-bottom: 8px;
+
+}
+
+.empresaRegistro {
+
+    font-size: 17px;
+
+    color: #d1d5db;
+
+    margin-bottom: 18px;
+
+}
+
+.usuarioRegistro {
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
 
 }
 
@@ -369,11 +623,11 @@ h1 {
 }
 
 
-/* =========================================
-   PANTALLA DUPLICADO
-========================================= */
+/* =========================================================
+   PUNTO NO REGISTRADO
+========================================================= */
 
-#mensajeDuplicado {
+#mensajePuntoNoEncontrado {
 
     position: fixed;
 
@@ -387,7 +641,7 @@ h1 {
 
     background: rgba(17, 24, 39, 0.97);
 
-    z-index: 2000;
+    z-index: 4000;
 
     display: none;
 
@@ -397,7 +651,7 @@ h1 {
 
 }
 
-.duplicadoBox {
+.errorBox {
 
     width: 90%;
 
@@ -409,7 +663,7 @@ h1 {
 
 }
 
-.iconoDuplicado {
+.iconoError {
 
     font-size: 75px;
 
@@ -417,33 +671,33 @@ h1 {
 
 }
 
-.tituloDuplicado {
+.tituloError {
 
-    font-size: 36px;
+    font-size: 34px;
 
     font-weight: bold;
 
-    color: #fbbf24;
+    color: #f87171;
 
     margin-bottom: 20px;
 
 }
 
-.codigoDuplicado {
+.codigoError {
 
-    font-size: 38px;
+    font-size: 30px;
 
     font-weight: bold;
 
-    margin-bottom: 15px;
-
     word-break: break-word;
+
+    margin-bottom: 18px;
 
 }
 
-.tiempoDuplicado {
+.detalleError {
 
-    font-size: 19px;
+    font-size: 18px;
 
     color: #d1d5db;
 
@@ -451,18 +705,39 @@ h1 {
 
 }
 
-.continuarDuplicado {
 
-    font-size: 17px;
+/* =========================================================
+   PUNTO INACTIVO
+========================================================= */
 
-    color: #9ca3af;
+#mensajePuntoInactivo {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.97);
+
+    z-index: 4000;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
 
 }
 
 
-/* =========================================
-   PANTALLA QR NO VÁLIDO
-========================================= */
+/* =========================================================
+   QR NO VÁLIDO
+========================================================= */
 
 #mensajeInvalido {
 
@@ -478,7 +753,7 @@ h1 {
 
     background: rgba(17, 24, 39, 0.97);
 
-    z-index: 2000;
+    z-index: 4000;
 
     display: none;
 
@@ -488,72 +763,39 @@ h1 {
 
 }
 
-.invalidoBox {
 
-    width: 90%;
+/* =========================================================
+   DUPLICADO
+========================================================= */
 
-    max-width: 450px;
+#mensajeDuplicado {
 
-    text-align: center;
+    position: fixed;
 
-    padding: 30px;
+    top: 0;
 
-}
+    left: 0;
 
-.iconoInvalido {
+    width: 100%;
 
-    font-size: 75px;
+    height: 100%;
 
-    margin-bottom: 10px;
+    background: rgba(17, 24, 39, 0.97);
 
-}
+    z-index: 4000;
 
-.tituloInvalido {
+    display: none;
 
-    font-size: 36px;
+    justify-content: center;
 
-    font-weight: bold;
-
-    color: #f87171;
-
-    margin-bottom: 20px;
-
-}
-
-.codigoInvalido {
-
-    font-size: 30px;
-
-    font-weight: bold;
-
-    margin-bottom: 15px;
-
-    word-break: break-word;
-
-}
-
-.detalleInvalido {
-
-    font-size: 18px;
-
-    color: #d1d5db;
-
-    margin-bottom: 25px;
-
-}
-
-.continuarInvalido {
-
-    font-size: 17px;
-
-    color: #9ca3af;
+    align-items: center;
 
 }
 
 
-/* =========================================
-   PANTALLA ERROR DE CONEXIÓN
-========================================= */
+/* =========================================================
+   ERROR CONEXIÓN
+========================================================= */
 
 #mensajeConexion {
 
@@ -569,47 +811,13 @@ h1 {
 
     background: rgba(17, 24, 39, 0.97);
 
-    z-index: 2000;
+    z-index: 4000;
 
     display: none;
 
     justify-content: center;
 
     align-items: center;
-
-}
-
-.conexionBox {
-
-    width: 90%;
-
-    max-width: 450px;
-
-    text-align: center;
-
-    padding: 30px;
-
-}
-
-.tituloConexion {
-
-    font-size: 36px;
-
-    font-weight: bold;
-
-    color: #fbbf24;
-
-    margin-bottom: 20px;
-
-}
-
-.detalleConexion {
-
-    font-size: 19px;
-
-    color: #d1d5db;
-
-    margin-bottom: 25px;
 
 }
 
@@ -621,9 +829,9 @@ h1 {
 <body>
 
 
-<!-- =========================================
+<!-- =========================================================
      SELECCIÓN DE USUARIO
-========================================= -->
+========================================================= -->
 
 <div id="pantallaUsuario">
 
@@ -648,9 +856,222 @@ h1 {
 </div>
 
 
-<!-- =========================================
-     PANTALLA REGISTRADO
-========================================= -->
+<!-- =========================================================
+     FORMULARIO DE MUESTREO
+========================================================= -->
+
+<div id="formularioMuestreo">
+
+    <div class="formularioBox">
+
+        <div class="tituloFormulario">
+            DATOS DEL MUESTREO
+        </div>
+
+
+        <!-- INFORMACIÓN DEL PUNTO -->
+
+        <div class="puntoInfo">
+
+            <div class="puntoEtiqueta">
+                Código
+            </div>
+
+            <div
+                id="formCodigo"
+                class="puntoCodigo">
+            </div>
+
+
+            <div class="puntoEtiqueta">
+                Punto de muestreo
+            </div>
+
+            <div
+                id="formNombre"
+                class="puntoNombre">
+            </div>
+
+
+            <div class="puntoEtiqueta">
+                Empresa
+            </div>
+
+            <div
+                id="formEmpresa"
+                class="puntoEmpresa">
+            </div>
+
+        </div>
+
+
+        <!-- FECHA -->
+
+        <div class="campo">
+
+            <label for="fechaMuestreo">
+                Fecha de muestreo
+            </label>
+
+            <input
+                type="date"
+                id="fechaMuestreo">
+
+        </div>
+
+
+        <!-- PRESIÓN -->
+
+        <div class="campo">
+
+            <label for="presion">
+                Presión
+            </label>
+
+            <div class="filaMedicion">
+
+                <input
+                    type="number"
+                    id="presion"
+                    inputmode="decimal"
+                    step="0.1"
+                    placeholder="Ej. 125,5">
+
+
+                <select
+                    id="unidadPresion">
+
+                    <option value="PSI">
+                        PSI
+                    </option>
+
+                    <option value="bar">
+                        bar
+                    </option>
+
+                    <option value="kPa">
+                        kPa
+                    </option>
+
+                    <option value="kg/cm²">
+                        kg/cm²
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- TEMPERATURA -->
+
+        <div class="campo">
+
+            <label for="temperatura">
+                Temperatura
+            </label>
+
+            <div class="filaMedicion">
+
+                <input
+                    type="number"
+                    id="temperatura"
+                    inputmode="decimal"
+                    step="0.1"
+                    placeholder="Ej. 18,4">
+
+                <select disabled>
+
+                    <option>
+                        °C
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAUDAL -->
+
+        <div class="campo">
+
+            <label for="caudal">
+                Caudal
+            </label>
+
+            <div class="filaMedicion">
+
+                <input
+                    type="number"
+                    id="caudal"
+                    inputmode="decimal"
+                    step="0.1"
+                    placeholder="Ej. 125,0">
+
+
+                <select
+                    id="unidadCaudal">
+
+                    <option value="m³/h">
+                        m³/h
+                    </option>
+
+                    <option value="L/min">
+                        L/min
+                    </option>
+
+                    <option value="L/h">
+                        L/h
+                    </option>
+
+                    <option value="m³/d">
+                        m³/d
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTONES -->
+
+        <div class="botonesFormulario">
+
+            <button
+                type="button"
+                class="botonCancelar"
+                onclick="cancelarMuestreo()">
+
+                CANCELAR
+
+            </button>
+
+
+            <button
+                type="button"
+                id="botonConfirmar"
+                class="botonConfirmar"
+                onclick="confirmarMuestreo()">
+
+                CONFIRMAR
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REGISTRADO
+========================================================= -->
 
 <div id="mensajeRegistro">
 
@@ -670,12 +1091,22 @@ h1 {
         </div>
 
         <div
+            id="nombreRegistro"
+            class="nombreRegistro">
+        </div>
+
+        <div
+            id="empresaRegistro"
+            class="empresaRegistro">
+        </div>
+
+        <div
             id="usuarioRegistro"
             class="usuarioRegistro">
         </div>
 
         <div class="continuarRegistro">
-            Listo para el siguiente código...
+            Muestreo guardado correctamente.
         </div>
 
     </div>
@@ -683,34 +1114,30 @@ h1 {
 </div>
 
 
-<!-- =========================================
-     PANTALLA DUPLICADO
-========================================= -->
+<!-- =========================================================
+     PUNTO NO REGISTRADO
+========================================================= -->
 
-<div id="mensajeDuplicado">
+<div id="mensajePuntoNoEncontrado">
 
-    <div class="duplicadoBox">
+    <div class="errorBox">
 
-        <div class="iconoDuplicado">
-            ⏱️
+        <div class="iconoError">
+            ❌
         </div>
 
-        <div class="tituloDuplicado">
-            YA REGISTRADO
-        </div>
-
-        <div
-            id="codigoDuplicado"
-            class="codigoDuplicado">
+        <div class="tituloError">
+            PUNTO NO REGISTRADO
         </div>
 
         <div
-            id="tiempoDuplicado"
-            class="tiempoDuplicado">
+            id="codigoNoEncontrado"
+            class="codigoError">
         </div>
 
-        <div class="continuarDuplicado">
-            Puede continuar con otro código.
+        <div class="detalleError">
+            Este código no existe en la lista
+            de Puntos Muestreos.
         </div>
 
     </div>
@@ -718,34 +1145,71 @@ h1 {
 </div>
 
 
-<!-- =========================================
-     PANTALLA QR NO VÁLIDO
-========================================= -->
+<!-- =========================================================
+     PUNTO INACTIVO
+========================================================= -->
+
+<div id="mensajePuntoInactivo">
+
+    <div class="errorBox">
+
+        <div class="iconoError">
+            ⚠️
+        </div>
+
+        <div class="tituloError">
+            PUNTO INACTIVO
+        </div>
+
+        <div
+            id="codigoInactivo"
+            class="codigoError">
+        </div>
+
+        <div
+            id="nombreInactivo"
+            class="nombreRegistro">
+        </div>
+
+        <div
+            id="empresaInactiva"
+            class="empresaRegistro">
+        </div>
+
+        <div class="detalleError">
+            Este punto está marcado como
+            inactivo y no puede registrarse.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     QR NO VÁLIDO
+========================================================= -->
 
 <div id="mensajeInvalido">
 
-    <div class="invalidoBox">
+    <div class="errorBox">
 
-        <div class="iconoInvalido">
-            ✕
+        <div class="iconoError">
+            ❌
         </div>
 
-        <div class="tituloInvalido">
+        <div class="tituloError">
             QR NO VÁLIDO
         </div>
 
         <div
             id="codigoInvalido"
-            class="codigoInvalido">
+            class="codigoError">
         </div>
 
-        <div class="detalleInvalido">
+        <div class="detalleError">
             El código no cumple con el formato
-            requerido para un Punto de Medición.
-        </div>
-
-        <div class="continuarInvalido">
-            Puede continuar con otro código.
+            requerido.
         </div>
 
     </div>
@@ -753,40 +1217,81 @@ h1 {
 </div>
 
 
-<!-- =========================================
+<!-- =========================================================
+     DUPLICADO
+========================================================= -->
+
+<div id="mensajeDuplicado">
+
+    <div class="errorBox">
+
+        <div class="iconoError">
+            ⏱️
+        </div>
+
+        <div class="tituloError"
+             style="color:#fbbf24;">
+
+            YA REGISTRADO
+
+        </div>
+
+        <div
+            id="codigoDuplicado"
+            class="codigoError">
+        </div>
+
+        <div
+            id="tiempoDuplicado"
+            class="detalleError">
+        </div>
+
+        <div class="continuarRegistro">
+            Puede continuar con otro punto.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      ERROR DE CONEXIÓN
-========================================= -->
+========================================================= -->
 
 <div id="mensajeConexion">
 
-    <div class="conexionBox">
+    <div class="errorBox">
 
-        <div class="tituloConexion">
-            ⚠️ ERROR DE CONEXIÓN
+        <div class="iconoError">
+            ⚠️
         </div>
 
-        <div class="detalleConexion">
+        <div class="tituloError"
+             style="color:#fbbf24;">
+
+            ERROR DE CONEXIÓN
+
+        </div>
+
+        <div class="detalleError">
             No se pudo obtener respuesta
             del servidor.
         </div>
 
-        <div class="continuarInvalido">
-            Puede intentar nuevamente.
-        </div>
-
     </div>
 
 </div>
 
 
-<!-- =========================================
-     APLICACIÓN
-========================================= -->
+<!-- =========================================================
+     APLICACIÓN PRINCIPAL
+========================================================= -->
 
 <div class="contenedor">
 
     <h1>
-        📷 Registro QR
+        📷 Registro de Muestreos
     </h1>
 
 
@@ -812,7 +1317,7 @@ h1 {
 
     <div class="contador">
 
-        Registros de esta sesión
+        Muestreos registrados
 
         <div
             id="contador"
@@ -858,25 +1363,25 @@ h1 {
 <script>
 
 
-// ==========================================
-// URL DE GOOGLE APPS SCRIPT
-// ==========================================
+// =========================================================
+// URL APPS SCRIPT
+// =========================================================
 
 const APPS_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbw__ILZ_j2wU3meAAP5edSrV9Q657mdublR3aBRLD-QLmUlzE0-8SkZV527fbqlu-lU/exec";
 
 
-// ==========================================
+// =========================================================
 // CONFIGURACIÓN
-// ==========================================
+// =========================================================
 
 const TIEMPO_BLOQUEO =
     5 * 60 * 1000;
 
 
-// ==========================================
+// =========================================================
 // VARIABLES
-// ==========================================
+// =========================================================
 
 let usuarioActual =
     null;
@@ -887,13 +1392,16 @@ let procesando =
 let cantidadRegistros =
     0;
 
+let puntoActual =
+    null;
+
 let temporizadorRespuesta =
     null;
 
 
-// ==========================================
-// CARGAR USUARIO GUARDADO
-// ==========================================
+// =========================================================
+// CARGAR PÁGINA
+// =========================================================
 
 window.onload = function() {
 
@@ -914,23 +1422,63 @@ window.onload = function() {
         ).innerText =
             usuarioActual;
 
-
-        document.getElementById(
-            "pantallaUsuario"
-        ).style.display =
-            "none";
-
     }
 
 
     cargarUsuarios();
 
+    establecerFechaActual();
+
 };
 
 
-// ==========================================
-// CARGAR USUARIOS DESDE APPS SCRIPT
-// ==========================================
+// =========================================================
+// FECHA ACTUAL
+// =========================================================
+
+function establecerFechaActual() {
+
+    const hoy =
+        new Date();
+
+
+    const año =
+        hoy.getFullYear();
+
+
+    const mes =
+        String(
+            hoy.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const dia =
+        String(
+            hoy.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    document.getElementById(
+        "fechaMuestreo"
+    ).value =
+        año +
+        "-" +
+        mes +
+        "-" +
+        dia;
+
+}
+
+
+// =========================================================
+// CARGAR USUARIOS
+// =========================================================
 
 function cargarUsuarios() {
 
@@ -943,18 +1491,48 @@ function cargarUsuarios() {
         );
 
 
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
     window[callbackName] =
         function(respuesta) {
 
-            procesarUsuarios(
-                respuesta,
+            limpiarCallback(
                 callbackName
+            );
+
+
+            limpiarScript(
+                script
+            );
+
+
+            if (
+                !respuesta ||
+                respuesta.ok !== true ||
+                !Array.isArray(
+                    respuesta.usuarios
+                )
+            ) {
+
+                mostrarErrorUsuarios();
+
+                return;
+
+            }
+
+
+            mostrarUsuarios(
+                respuesta.usuarios
             );
 
         };
 
 
-    const url =
+    script.src =
         APPS_SCRIPT_URL +
         "?accion=usuarios" +
         "&callback=" +
@@ -964,15 +1542,6 @@ function cargarUsuarios() {
         "&t=" +
         Date.now();
 
-
-    const script =
-        document.createElement(
-            "script"
-        );
-
-
-    script.src =
-        url;
 
     script.async =
         true;
@@ -986,14 +1555,12 @@ function cargarUsuarios() {
             );
 
 
-            document.getElementById(
-                "listaUsuarios"
-            ).innerHTML =
-                '<div class="mensajeUsuarios">' +
-                'No se pudieron cargar los usuarios.' +
-                '<br><br>' +
-                'Compruebe la conexión.' +
-                '</div>';
+            limpiarScript(
+                script
+            );
+
+
+            mostrarErrorUsuarios();
 
         };
 
@@ -1002,55 +1569,16 @@ function cargarUsuarios() {
         script
     );
 
-
-    setTimeout(
-        function() {
-
-            limpiarScript(
-                script
-            );
-
-
-        },
-        10000
-    );
-
 }
 
 
-// ==========================================
-// PROCESAR USUARIOS
-// ==========================================
+// =========================================================
+// MOSTRAR USUARIOS
+// =========================================================
 
-function procesarUsuarios(
-    respuesta,
-    callbackName
+function mostrarUsuarios(
+    usuarios
 ) {
-
-    limpiarCallback(
-        callbackName
-    );
-
-
-    if (
-        !respuesta ||
-        respuesta.ok !== true ||
-        !Array.isArray(
-            respuesta.usuarios
-        )
-    ) {
-
-        document.getElementById(
-            "listaUsuarios"
-        ).innerHTML =
-            '<div class="mensajeUsuarios">' +
-            'No se pudieron cargar los usuarios.' +
-            '</div>';
-
-        return;
-
-    }
-
 
     const lista =
         document.getElementById(
@@ -1063,7 +1591,7 @@ function procesarUsuarios(
 
 
     if (
-        respuesta.usuarios.length === 0
+        usuarios.length === 0
     ) {
 
         lista.innerHTML =
@@ -1076,7 +1604,7 @@ function procesarUsuarios(
     }
 
 
-    respuesta.usuarios.forEach(
+    usuarios.forEach(
         function(usuario) {
 
             const boton =
@@ -1111,14 +1639,12 @@ function procesarUsuarios(
     );
 
 
-    // ------------------------------------------------
-    // Si hay usuario guardado y sigue activo,
-    // ocultar selección.
-    // ------------------------------------------------
+    // Si hay usuario guardado
+    // y sigue activo, ocultar selección.
 
     if (
         usuarioActual &&
-        respuesta.usuarios.indexOf(
+        usuarios.indexOf(
             usuarioActual
         ) !== -1
     ) {
@@ -1128,61 +1654,39 @@ function procesarUsuarios(
         ).style.display =
             "none";
 
-    }
+    } else {
 
-}
-
-
-// ==========================================
-// LIMPIAR CALLBACK
-// ==========================================
-
-function limpiarCallback(
-    callbackName
-) {
-
-    try {
-
-        delete window[
-            callbackName
-        ];
-
-    } catch (error) {
-
-        window[
-            callbackName
-        ] = undefined;
+        document.getElementById(
+            "pantallaUsuario"
+        ).style.display =
+            "flex";
 
     }
 
 }
 
 
-// ==========================================
-// LIMPIAR SCRIPT
-// ==========================================
+// =========================================================
+// ERROR CARGA USUARIOS
+// =========================================================
 
-function limpiarScript(
-    script
-) {
+function mostrarErrorUsuarios() {
 
-    if (
-        script &&
-        script.parentNode
-    ) {
-
-        script.parentNode.removeChild(
-            script
-        );
-
-    }
+    document.getElementById(
+        "listaUsuarios"
+    ).innerHTML =
+        '<div class="mensajeUsuarios">' +
+        'No se pudieron cargar los usuarios.' +
+        '<br><br>' +
+        'Verifique la conexión.' +
+        '</div>';
 
 }
 
 
-// ==========================================
+// =========================================================
 // SELECCIONAR USUARIO
-// ==========================================
+// =========================================================
 
 function seleccionarUsuario(
     usuario
@@ -1212,76 +1716,28 @@ function seleccionarUsuario(
 }
 
 
-// ==========================================
+// =========================================================
 // CAMBIAR USUARIO
-// ==========================================
+// =========================================================
 
 function cambiarUsuario() {
 
-    // Ocultar posibles mensajes
-
     cerrarMensajes();
 
+    cargarUsuarios();
 
-    // Mostrar pantalla
 
     document.getElementById(
         "pantallaUsuario"
     ).style.display =
         "flex";
 
-
-    // Recargar usuarios
-
-    cargarUsuarios();
-
 }
 
 
-// ==========================================
-// CERRAR MENSAJES
-// ==========================================
-
-function cerrarMensajes() {
-
-    const ids = [
-
-        "mensajeRegistro",
-
-        "mensajeDuplicado",
-
-        "mensajeInvalido",
-
-        "mensajeConexion"
-
-    ];
-
-
-    ids.forEach(
-        function(id) {
-
-            const elemento =
-                document.getElementById(
-                    id
-                );
-
-
-            if (elemento) {
-
-                elemento.style.display =
-                    "none";
-
-            }
-
-        }
-    );
-
-}
-
-
-// ==========================================
-// OBTENER BLOQUEOS LOCALES
-// ==========================================
+// =========================================================
+// BLOQUEOS LOCALES
+// =========================================================
 
 function obtenerBloqueos() {
 
@@ -1302,9 +1758,9 @@ function obtenerBloqueos() {
 }
 
 
-// ==========================================
+// =========================================================
 // GUARDAR BLOQUEO LOCAL
-// ==========================================
+// =========================================================
 
 function guardarBloqueo(
     codigo
@@ -1328,9 +1784,9 @@ function guardarBloqueo(
 }
 
 
-// ==========================================
-// OBTENER TIEMPO RESTANTE LOCAL
-// ==========================================
+// =========================================================
+// TIEMPO RESTANTE LOCAL
+// =========================================================
 
 function obtenerTiempoRestante(
     codigo
@@ -1384,9 +1840,9 @@ function obtenerTiempoRestante(
 }
 
 
-// ==========================================
+// =========================================================
 // FORMATEAR TIEMPO
-// ==========================================
+// =========================================================
 
 function formatearTiempo(
     milisegundos
@@ -1394,18 +1850,21 @@ function formatearTiempo(
 
     const segundos =
         Math.ceil(
-            milisegundos / 1000
+            milisegundos /
+            1000
         );
 
 
     const minutos =
         Math.floor(
-            segundos / 60
+            segundos /
+            60
         );
 
 
     const segundosRestantes =
-        segundos % 60;
+        segundos %
+        60;
 
 
     return (
@@ -1418,9 +1877,9 @@ function formatearTiempo(
 }
 
 
-// ==========================================
+// =========================================================
 // SONIDO ÉXITO
-// ==========================================
+// =========================================================
 
 function reproducirSonidoExito() {
 
@@ -1482,9 +1941,9 @@ function reproducirSonidoExito() {
 }
 
 
-// ==========================================
+// =========================================================
 // SONIDO ERROR
-// ==========================================
+// =========================================================
 
 function reproducirSonidoError() {
 
@@ -1538,7 +1997,7 @@ function reproducirSonidoError() {
     } catch (error) {
 
         console.log(
-            "No se pudo reproducir sonido de error"
+            "No se pudo reproducir sonido"
         );
 
     }
@@ -1546,9 +2005,9 @@ function reproducirSonidoError() {
 }
 
 
-// ==========================================
+// =========================================================
 // VIBRACIÓN ÉXITO
-// ==========================================
+// =========================================================
 
 function vibrarExito() {
 
@@ -1565,9 +2024,9 @@ function vibrarExito() {
 }
 
 
-// ==========================================
+// =========================================================
 // VIBRACIÓN ERROR
-// ==========================================
+// =========================================================
 
 function vibrarError() {
 
@@ -1584,25 +2043,82 @@ function vibrarError() {
 }
 
 
-// ==========================================
+// =========================================================
+// CERRAR MENSAJES
+// =========================================================
+
+function cerrarMensajes() {
+
+    const ids = [
+
+        "mensajeRegistro",
+
+        "mensajePuntoNoEncontrado",
+
+        "mensajePuntoInactivo",
+
+        "mensajeInvalido",
+
+        "mensajeDuplicado",
+
+        "mensajeConexion"
+
+    ];
+
+
+    ids.forEach(
+        function(id) {
+
+            const elemento =
+                document.getElementById(
+                    id
+                );
+
+
+            if (elemento) {
+
+                elemento.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================================
 // MOSTRAR REGISTRADO
-// ==========================================
+// =========================================================
 
 function mostrarRegistrado(
-    codigo
+    respuesta
 ) {
 
     document.getElementById(
         "codigoRegistro"
     ).innerText =
-        codigo;
+        respuesta.codigo;
+
+
+    document.getElementById(
+        "nombreRegistro"
+    ).innerText =
+        respuesta.nombre;
+
+
+    document.getElementById(
+        "empresaRegistro"
+    ).innerText =
+        respuesta.empresa;
 
 
     document.getElementById(
         "usuarioRegistro"
     ).innerText =
         "Usuario: " +
-        usuarioActual;
+        respuesta.usuario;
 
 
     document.getElementById(
@@ -1628,16 +2144,161 @@ function mostrarRegistrado(
             procesando =
                 false;
 
+
         },
-        1500
+        1800
     );
 
 }
 
 
-// ==========================================
+// =========================================================
+// MOSTRAR PUNTO NO ENCONTRADO
+// =========================================================
+
+function mostrarPuntoNoEncontrado(
+    codigo
+) {
+
+    document.getElementById(
+        "codigoNoEncontrado"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "mensajePuntoNoEncontrado"
+    ).style.display =
+        "flex";
+
+
+    reproducirSonidoError();
+
+    vibrarError();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajePuntoNoEncontrado"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+        },
+        1800
+    );
+
+}
+
+
+// =========================================================
+// MOSTRAR PUNTO INACTIVO
+// =========================================================
+
+function mostrarPuntoInactivo(
+    respuesta
+) {
+
+    document.getElementById(
+        "codigoInactivo"
+    ).innerText =
+        respuesta.codigo;
+
+
+    document.getElementById(
+        "nombreInactivo"
+    ).innerText =
+        respuesta.nombre;
+
+
+    document.getElementById(
+        "empresaInactiva"
+    ).innerText =
+        respuesta.empresa;
+
+
+    document.getElementById(
+        "mensajePuntoInactivo"
+    ).style.display =
+        "flex";
+
+
+    reproducirSonidoError();
+
+    vibrarError();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajePuntoInactivo"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+        },
+        2000
+    );
+
+}
+
+
+// =========================================================
+// MOSTRAR QR INVÁLIDO
+// =========================================================
+
+function mostrarInvalido(
+    codigo
+) {
+
+    document.getElementById(
+        "codigoInvalido"
+    ).innerText =
+        codigo;
+
+
+    document.getElementById(
+        "mensajeInvalido"
+    ).style.display =
+        "flex";
+
+
+    reproducirSonidoError();
+
+    vibrarError();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "mensajeInvalido"
+            ).style.display =
+                "none";
+
+
+            procesando =
+                false;
+
+        },
+        1800
+    );
+
+}
+
+
+// =========================================================
 // MOSTRAR DUPLICADO
-// ==========================================
+// =========================================================
 
 function mostrarDuplicado(
     codigo,
@@ -1683,59 +2344,15 @@ function mostrarDuplicado(
                 false;
 
         },
-        1800
+        2000
     );
 
 }
 
 
-// ==========================================
-// MOSTRAR QR INVÁLIDO
-// ==========================================
-
-function mostrarInvalido(
-    codigo
-) {
-
-    document.getElementById(
-        "codigoInvalido"
-    ).innerText =
-        codigo;
-
-
-    document.getElementById(
-        "mensajeInvalido"
-    ).style.display =
-        "flex";
-
-
-    reproducirSonidoError();
-
-    vibrarError();
-
-
-    setTimeout(
-        function() {
-
-            document.getElementById(
-                "mensajeInvalido"
-            ).style.display =
-                "none";
-
-
-            procesando =
-                false;
-
-        },
-        1800
-    );
-
-}
-
-
-// ==========================================
+// =========================================================
 // MOSTRAR ERROR CONEXIÓN
-// ==========================================
+// =========================================================
 
 function mostrarErrorConexion() {
 
@@ -1769,14 +2386,500 @@ function mostrarErrorConexion() {
 }
 
 
-// ==========================================
-// PROCESAR RESPUESTA QR
-// ==========================================
+// =========================================================
+// MOSTRAR FORMULARIO
+// =========================================================
 
-function procesarRespuestaQR(
+function mostrarFormulario(
+    respuesta
+) {
+
+    puntoActual =
+        respuesta;
+
+
+    document.getElementById(
+        "formCodigo"
+    ).innerText =
+        respuesta.codigo;
+
+
+    document.getElementById(
+        "formNombre"
+    ).innerText =
+        respuesta.nombre;
+
+
+    document.getElementById(
+        "formEmpresa"
+    ).innerText =
+        respuesta.empresa;
+
+
+    establecerFechaActual();
+
+
+    document.getElementById(
+        "presion"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "temperatura"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "caudal"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "botonConfirmar"
+    ).disabled =
+        false;
+
+
+    document.getElementById(
+        "formularioMuestreo"
+    ).style.display =
+        "block";
+
+}
+
+
+// =========================================================
+// CANCELAR MUESTREO
+// =========================================================
+
+function cancelarMuestreo() {
+
+    document.getElementById(
+        "formularioMuestreo"
+    ).style.display =
+        "none";
+
+
+    puntoActual =
+        null;
+
+
+    procesando =
+        false;
+
+
+    document.getElementById(
+        "estado"
+    ).innerText =
+        "Listo para el siguiente código";
+
+
+    document.getElementById(
+        "estado"
+    ).className =
+        "estado";
+
+}
+
+
+// =========================================================
+// CONFIRMAR MUESTREO
+// =========================================================
+
+function confirmarMuestreo() {
+
+    if (
+        !puntoActual
+    ) {
+
+        return;
+
+    }
+
+
+    const fechaMuestreo =
+        document.getElementById(
+            "fechaMuestreo"
+        ).value;
+
+
+    const presion =
+        document.getElementById(
+            "presion"
+        ).value.trim();
+
+
+    const unidadPresion =
+        document.getElementById(
+            "unidadPresion"
+        ).value;
+
+
+    const temperatura =
+        document.getElementById(
+            "temperatura"
+        ).value.trim();
+
+
+    const caudal =
+        document.getElementById(
+            "caudal"
+        ).value.trim();
+
+
+    const unidadCaudal =
+        document.getElementById(
+            "unidadCaudal"
+        ).value;
+
+
+    // ======================================
+    // VALIDACIÓN LOCAL
+    // ======================================
+
+    if (
+        !fechaMuestreo
+    ) {
+
+        alert(
+            "Debe indicar la fecha de muestreo."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !presion
+    ) {
+
+        alert(
+            "Debe indicar la presión."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !temperatura
+    ) {
+
+        alert(
+            "Debe indicar la temperatura."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !caudal
+    ) {
+
+        alert(
+            "Debe indicar el caudal."
+        );
+
+        return;
+
+    }
+
+
+    // ======================================
+    // TEMPERATURA: UN SOLO DECIMAL
+    // ======================================
+
+    const numeroTemperatura =
+        Number(
+            temperatura.replace(
+                ",",
+                "."
+            )
+        );
+
+
+    if (
+        !Number.isFinite(
+            numeroTemperatura
+        )
+    ) {
+
+        alert(
+            "La temperatura no es válida."
+        );
+
+        return;
+
+    }
+
+
+    const textoTemperatura =
+        temperatura.replace(
+            ",",
+            "."
+        );
+
+
+    const partesTemperatura =
+        textoTemperatura.split(
+            "."
+        );
+
+
+    if (
+        partesTemperatura.length === 2 &&
+        partesTemperatura[1].length > 1
+    ) {
+
+        alert(
+            "La temperatura debe tener como máximo un decimal."
+        );
+
+        return;
+
+    }
+
+
+    // ======================================
+    // DESHABILITAR BOTÓN
+    // ======================================
+
+    const boton =
+        document.getElementById(
+            "botonConfirmar"
+        );
+
+
+    boton.disabled =
+        true;
+
+
+    boton.innerText =
+        "GUARDANDO...";
+
+
+    document.getElementById(
+        "formularioMuestreo"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "estado"
+    ).innerText =
+        "Registrando muestreo...";
+
+
+    enviarMuestreo(
+
+        puntoActual.codigo,
+
+        fechaMuestreo,
+
+        presion,
+
+        unidadPresion,
+
+        temperatura,
+
+        caudal,
+
+        unidadCaudal
+
+    );
+
+}
+
+
+// =========================================================
+// ENVIAR MUESTREO A APPS SCRIPT
+// =========================================================
+
+function enviarMuestreo(
+
+    codigo,
+
+    fechaMuestreo,
+
+    presion,
+
+    unidadPresion,
+
+    temperatura,
+
+    caudal,
+
+    unidadCaudal
+
+) {
+
+    const callbackName =
+        "registroQR_" +
+        Date.now() +
+        "_" +
+        Math.floor(
+            Math.random() *
+            100000
+        );
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    window[callbackName] =
+        function(respuesta) {
+
+            procesarRespuestaRegistro(
+
+                respuesta,
+
+                callbackName,
+
+                script
+
+            );
+
+        };
+
+
+    const url =
+        APPS_SCRIPT_URL +
+
+        "?accion=registrar" +
+
+        "&codigo=" +
+        encodeURIComponent(
+            codigo
+        ) +
+
+        "&usuario=" +
+        encodeURIComponent(
+            usuarioActual
+        ) +
+
+        "&fechaMuestreo=" +
+        encodeURIComponent(
+            fechaMuestreo
+        ) +
+
+        "&presion=" +
+        encodeURIComponent(
+            presion
+        ) +
+
+        "&unidadPresion=" +
+        encodeURIComponent(
+            unidadPresion
+        ) +
+
+        "&temperatura=" +
+        encodeURIComponent(
+            temperatura
+        ) +
+
+        "&caudal=" +
+        encodeURIComponent(
+            caudal
+        ) +
+
+        "&unidadCaudal=" +
+        encodeURIComponent(
+            unidadCaudal
+        ) +
+
+        "&callback=" +
+        encodeURIComponent(
+            callbackName
+        ) +
+
+        "&t=" +
+        Date.now();
+
+
+    script.src =
+        url;
+
+
+    script.async =
+        true;
+
+
+    script.onerror =
+        function() {
+
+            limpiarCallback(
+                callbackName
+            );
+
+
+            limpiarScript(
+                script
+            );
+
+
+            restaurarBotonConfirmar();
+
+            mostrarErrorConexion();
+
+        };
+
+
+    document.body.appendChild(
+        script
+    );
+
+
+    temporizadorRespuesta =
+        setTimeout(
+            function() {
+
+                limpiarCallback(
+                    callbackName
+                );
+
+
+                limpiarScript(
+                    script
+                );
+
+
+                temporizadorRespuesta =
+                    null;
+
+
+                restaurarBotonConfirmar();
+
+                mostrarErrorConexion();
+
+            },
+            8000
+        );
+
+}
+
+
+// =========================================================
+// PROCESAR RESPUESTA REGISTRO
+// =========================================================
+
+function procesarRespuestaRegistro(
+
     respuesta,
+
     callbackName,
+
     script
+
 ) {
 
     if (
@@ -1804,40 +2907,17 @@ function procesarRespuestaQR(
 
 
     // ======================================
-    // RESPUESTA NO VÁLIDA
+    // REGISTRO OK
     // ======================================
 
     if (
-        !respuesta ||
-        typeof respuesta.ok ===
-        "undefined"
-    ) {
-
-        mostrarErrorConexion();
-
-        return;
-
-    }
-
-
-    // ======================================
-    // REGISTRO CORRECTO
-    // ======================================
-
-    if (
+        respuesta &&
         respuesta.ok === true &&
         respuesta.tipo === "ok"
     ) {
 
-        const codigo =
-            respuesta.codigo;
-
-
-        // Bloqueo local solamente después
-        // de confirmar que el servidor guardó.
-
         guardarBloqueo(
-            codigo
+            respuesta.codigo
         );
 
 
@@ -1853,13 +2933,13 @@ function procesarRespuestaQR(
         document.getElementById(
             "codigo"
         ).innerText =
-            codigo;
+            respuesta.codigo;
 
 
         document.getElementById(
             "estado"
         ).innerText =
-            "✓ Registrado";
+            "✓ Muestreo registrado";
 
 
         document.getElementById(
@@ -1868,8 +2948,15 @@ function procesarRespuestaQR(
             "estado ok";
 
 
+        puntoActual =
+            null;
+
+
+        restaurarBotonConfirmar();
+
+
         mostrarRegistrado(
-            codigo
+            respuesta
         );
 
 
@@ -1883,28 +2970,14 @@ function procesarRespuestaQR(
     // ======================================
 
     if (
-        respuesta.tipo ===
-        "duplicado"
+        respuesta &&
+        respuesta.tipo === "duplicado"
     ) {
-
-        const codigo =
-            respuesta.codigo ||
-            document.getElementById(
-                "codigo"
-            ).innerText;
-
-
-        const segundos =
-            Number(
-                respuesta.segundosRestantes ||
-                0
-            );
-
 
         document.getElementById(
             "codigo"
         ).innerText =
-            codigo;
+            respuesta.codigo;
 
 
         document.getElementById(
@@ -1919,47 +2992,18 @@ function procesarRespuestaQR(
             "estado warning";
 
 
+        restaurarBotonConfirmar();
+
+
         mostrarDuplicado(
-            codigo,
-            segundos
-        );
 
+            respuesta.codigo,
 
-        return;
+            Number(
+                respuesta.segundosRestantes ||
+                0
+            )
 
-    }
-
-
-    // ======================================
-    // QR INVÁLIDO
-    // ======================================
-
-    if (
-        respuesta.tipo ===
-        "invalido"
-    ) {
-
-        const codigo =
-            respuesta.codigo ||
-            document.getElementById(
-                "codigo"
-            ).innerText;
-
-
-        document.getElementById(
-            "estado"
-        ).innerText =
-            "QR no válido";
-
-
-        document.getElementById(
-            "estado"
-        ).className =
-            "estado error";
-
-
-        mostrarInvalido(
-            codigo
         );
 
 
@@ -1972,25 +3016,108 @@ function procesarRespuestaQR(
     // ERROR
     // ======================================
 
+    if (
+        respuesta &&
+        respuesta.tipo === "punto_no_encontrado"
+    ) {
+
+        restaurarBotonConfirmar();
+
+
+        mostrarPuntoNoEncontrado(
+            respuesta.codigo
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        respuesta &&
+        respuesta.tipo === "punto_inactivo"
+    ) {
+
+        restaurarBotonConfirmar();
+
+
+        mostrarPuntoInactivo(
+            respuesta
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        respuesta &&
+        respuesta.tipo === "invalido"
+    ) {
+
+        restaurarBotonConfirmar();
+
+
+        mostrarInvalido(
+            respuesta.codigo
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // ERROR GENÉRICO
+    // ======================================
+
+    restaurarBotonConfirmar();
+
     mostrarErrorConexion();
 
 }
 
 
-// ==========================================
-// ENVIAR CÓDIGO A APPS SCRIPT
-// ==========================================
+// =========================================================
+// RESTAURAR BOTÓN CONFIRMAR
+// =========================================================
 
-function enviarCodigo(
+function restaurarBotonConfirmar() {
+
+    const boton =
+        document.getElementById(
+            "botonConfirmar"
+        );
+
+
+    boton.disabled =
+        false;
+
+
+    boton.innerText =
+        "CONFIRMAR";
+
+}
+
+
+// =========================================================
+// VALIDAR QR
+// =========================================================
+
+function validarQR(
     codigo
 ) {
 
     const callbackName =
-        "respuestaQR_" +
+        "validacionQR_" +
         Date.now() +
         "_" +
         Math.floor(
-            Math.random() * 100000
+            Math.random() *
+            100000
         );
 
 
@@ -2003,10 +3130,14 @@ function enviarCodigo(
     window[callbackName] =
         function(respuesta) {
 
-            procesarRespuestaQR(
+            procesarValidacionQR(
+
                 respuesta,
+
                 callbackName,
+
                 script
+
             );
 
         };
@@ -2014,18 +3145,24 @@ function enviarCodigo(
 
     const url =
         APPS_SCRIPT_URL +
-        "?codigo=" +
+
+        "?accion=validar" +
+
+        "&codigo=" +
         encodeURIComponent(
             codigo
         ) +
+
         "&usuario=" +
         encodeURIComponent(
             usuarioActual
         ) +
+
         "&callback=" +
         encodeURIComponent(
             callbackName
         ) +
+
         "&t=" +
         Date.now();
 
@@ -2040,20 +3177,6 @@ function enviarCodigo(
 
     script.onerror =
         function() {
-
-            if (
-                temporizadorRespuesta
-            ) {
-
-                clearTimeout(
-                    temporizadorRespuesta
-                );
-
-                temporizadorRespuesta =
-                    null;
-
-            }
-
 
             limpiarCallback(
                 callbackName
@@ -2102,13 +3225,144 @@ function enviarCodigo(
 }
 
 
-// ==========================================
+// =========================================================
+// PROCESAR VALIDACIÓN QR
+// =========================================================
+
+function procesarValidacionQR(
+
+    respuesta,
+
+    callbackName,
+
+    script
+
+) {
+
+    if (
+        temporizadorRespuesta
+    ) {
+
+        clearTimeout(
+            temporizadorRespuesta
+        );
+
+        temporizadorRespuesta =
+            null;
+
+    }
+
+
+    limpiarCallback(
+        callbackName
+    );
+
+
+    limpiarScript(
+        script
+    );
+
+
+    // ======================================
+    // PUNTO VÁLIDO
+    // ======================================
+
+    if (
+        respuesta &&
+        respuesta.ok === true &&
+        respuesta.tipo === "punto_valido"
+    ) {
+
+        mostrarFormulario(
+            respuesta
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // PUNTO NO REGISTRADO
+    // ======================================
+
+    if (
+        respuesta &&
+        respuesta.tipo ===
+        "punto_no_encontrado"
+    ) {
+
+        mostrarPuntoNoEncontrado(
+            respuesta.codigo
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // PUNTO INACTIVO
+    // ======================================
+
+    if (
+        respuesta &&
+        respuesta.tipo ===
+        "punto_inactivo"
+    ) {
+
+        mostrarPuntoInactivo(
+            respuesta
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // QR INVÁLIDO
+    // ======================================
+
+    if (
+        respuesta &&
+        respuesta.tipo ===
+        "invalido"
+    ) {
+
+        mostrarInvalido(
+            respuesta.codigo
+        );
+
+
+        return;
+
+    }
+
+
+    // ======================================
+    // ERROR
+    // ======================================
+
+    mostrarErrorConexion();
+
+}
+
+
+// =========================================================
 // LEER QR
-// ==========================================
+// =========================================================
 
 function codigoLeido(
     codigo
 ) {
+
+    // --------------------------------------
+    // Evitar lecturas simultáneas
+    // --------------------------------------
 
     if (
         procesando
@@ -2119,12 +3373,16 @@ function codigoLeido(
     }
 
 
+    // --------------------------------------
+    // Verificar usuario
+    // --------------------------------------
+
     if (
         !usuarioActual
     ) {
 
         alert(
-            "Primero debe seleccionar un usuario"
+            "Primero debe seleccionar un usuario."
         );
 
         return;
@@ -2143,9 +3401,9 @@ function codigoLeido(
     }
 
 
-    // ======================================
-    // BLOQUEO LOCAL
-    // ======================================
+    // --------------------------------------
+    // Bloqueo local
+    // --------------------------------------
 
     const tiempoRestante =
         obtenerTiempoRestante(
@@ -2180,10 +3438,14 @@ function codigoLeido(
 
 
         mostrarDuplicado(
+
             codigo,
+
             Math.ceil(
-                tiempoRestante / 1000
+                tiempoRestante /
+                1000
             )
+
         );
 
 
@@ -2192,9 +3454,9 @@ function codigoLeido(
     }
 
 
-    // ======================================
-    // PREPARAR ENVÍO
-    // ======================================
+    // --------------------------------------
+    // Preparar validación
+    // --------------------------------------
 
     procesando =
         true;
@@ -2209,7 +3471,7 @@ function codigoLeido(
     document.getElementById(
         "estado"
     ).innerText =
-        "Validando...";
+        "Validando punto...";
 
 
     document.getElementById(
@@ -2218,16 +3480,67 @@ function codigoLeido(
         "estado";
 
 
-    enviarCodigo(
+    // --------------------------------------
+    // Validar con Apps Script
+    // --------------------------------------
+
+    validarQR(
         codigo
     );
 
 }
 
 
-// ==========================================
-// CREAR LECTOR QR
-// ==========================================
+// =========================================================
+// LIMPIAR CALLBACK
+// =========================================================
+
+function limpiarCallback(
+    callbackName
+) {
+
+    try {
+
+        delete window[
+            callbackName
+        ];
+
+    } catch (error) {
+
+        window[
+            callbackName
+        ] = undefined;
+
+    }
+
+}
+
+
+// =========================================================
+// LIMPIAR SCRIPT
+// =========================================================
+
+function limpiarScript(
+    script
+) {
+
+    if (
+        script &&
+        script.parentNode
+    ) {
+
+        script.parentNode.removeChild(
+            script
+        );
+
+    }
+
+}
+
+
+// =========================================================
+// CREAR LECTOR
+// =========================================================
 
 const scanner =
     new Html5QrcodeScanner(
@@ -2253,9 +3566,9 @@ const scanner =
     );
 
 
-// ==========================================
+// =========================================================
 // INICIAR LECTOR
-// ==========================================
+// =========================================================
 
 scanner.render(
 
@@ -2263,8 +3576,8 @@ scanner.render(
 
     function(error) {
 
-        // Los errores normales de búsqueda
-        // se ignoran.
+        // Errores normales de búsqueda.
+        // Se ignoran.
 
     }
 
