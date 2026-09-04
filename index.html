@@ -14,11 +14,10 @@
         type="text/javascript">
 </script>
 
-
 <style>
 
 /* =========================================================
-   CONFIGURACIÓN GENERAL
+   GENERAL
 ========================================================= */
 
 * {
@@ -189,7 +188,7 @@ h1 {
 
 
 /* =========================================================
-   PANTALLA SELECCIÓN USUARIO
+   USUARIO
 ========================================================= */
 
 #pantallaUsuario {
@@ -454,7 +453,7 @@ h1 {
 
 
 /* =========================================================
-   BOTONES FORMULARIO
+   BOTONES
 ========================================================= */
 
 .botonesFormulario {
@@ -517,10 +516,15 @@ h1 {
 
 
 /* =========================================================
-   PANTALLA REGISTRADO
+   REGISTRADO
 ========================================================= */
 
-#mensajeRegistro {
+#mensajeRegistro,
+#mensajePuntoNoEncontrado,
+#mensajePuntoInactivo,
+#mensajeInvalido,
+#mensajeDuplicado,
+#mensajeConexion {
 
     position: fixed;
 
@@ -544,7 +548,8 @@ h1 {
 
 }
 
-.registroBox {
+.registroBox,
+.errorBox {
 
     width: 90%;
 
@@ -556,9 +561,10 @@ h1 {
 
 }
 
-.iconoRegistro {
+.iconoRegistro,
+.iconoError {
 
-    font-size: 80px;
+    font-size: 75px;
 
     margin-bottom: 10px;
 
@@ -576,13 +582,14 @@ h1 {
 
 }
 
-.codigoRegistro {
+.codigoRegistro,
+.codigoError {
 
     font-size: 38px;
 
     font-weight: bold;
 
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 
     word-break: break-word;
 
@@ -622,55 +629,6 @@ h1 {
 
 }
 
-
-/* =========================================================
-   PUNTO NO REGISTRADO
-========================================================= */
-
-#mensajePuntoNoEncontrado {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 4000;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
-
-}
-
-.errorBox {
-
-    width: 90%;
-
-    max-width: 450px;
-
-    text-align: center;
-
-    padding: 30px;
-
-}
-
-.iconoError {
-
-    font-size: 75px;
-
-    margin-bottom: 10px;
-
-}
-
 .tituloError {
 
     font-size: 34px;
@@ -680,18 +638,6 @@ h1 {
     color: #f87171;
 
     margin-bottom: 20px;
-
-}
-
-.codigoError {
-
-    font-size: 30px;
-
-    font-weight: bold;
-
-    word-break: break-word;
-
-    margin-bottom: 18px;
 
 }
 
@@ -705,119 +651,24 @@ h1 {
 
 }
 
+.warningTitle {
 
-/* =========================================================
-   PUNTO INACTIVO
-========================================================= */
-
-#mensajePuntoInactivo {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 4000;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
+    color: #fbbf24;
 
 }
 
 
 /* =========================================================
-   QR NO VÁLIDO
+   TEMPORIZADOR
 ========================================================= */
 
-#mensajeInvalido {
+#tiempoDuplicado {
 
-    position: fixed;
+    color: #d1d5db;
 
-    top: 0;
+    font-size: 18px;
 
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 4000;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
-
-}
-
-
-/* =========================================================
-   DUPLICADO
-========================================================= */
-
-#mensajeDuplicado {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 4000;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
-
-}
-
-
-/* =========================================================
-   ERROR CONEXIÓN
-========================================================= */
-
-#mensajeConexion {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(17, 24, 39, 0.97);
-
-    z-index: 4000;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
+    margin-bottom: 20px;
 
 }
 
@@ -830,7 +681,7 @@ h1 {
 
 
 <!-- =========================================================
-     SELECCIÓN DE USUARIO
+     SELECCIÓN USUARIO
 ========================================================= -->
 
 <div id="pantallaUsuario">
@@ -857,7 +708,7 @@ h1 {
 
 
 <!-- =========================================================
-     FORMULARIO DE MUESTREO
+     FORMULARIO
 ========================================================= -->
 
 <div id="formularioMuestreo">
@@ -868,8 +719,6 @@ h1 {
             DATOS DEL MUESTREO
         </div>
 
-
-        <!-- INFORMACIÓN DEL PUNTO -->
 
         <div class="puntoInfo">
 
@@ -910,7 +759,7 @@ h1 {
         <div class="campo">
 
             <label for="fechaMuestreo">
-                Fecha de muestreo
+                Fecha de muestreo *
             </label>
 
             <input
@@ -935,11 +784,15 @@ h1 {
                     id="presion"
                     inputmode="decimal"
                     step="0.1"
-                    placeholder="Ej. 125,5">
+                    placeholder="Opcional">
 
 
                 <select
                     id="unidadPresion">
+
+                    <option value="">
+                        —
+                    </option>
 
                     <option value="PSI">
                         PSI
@@ -979,7 +832,8 @@ h1 {
                     id="temperatura"
                     inputmode="decimal"
                     step="0.1"
-                    placeholder="Ej. 18,4">
+                    placeholder="Opcional">
+
 
                 <select disabled>
 
@@ -1009,11 +863,15 @@ h1 {
                     id="caudal"
                     inputmode="decimal"
                     step="0.1"
-                    placeholder="Ej. 125,0">
+                    placeholder="Opcional">
 
 
                 <select
                     id="unidadCaudal">
+
+                    <option value="">
+                        —
+                    </option>
 
                     <option value="m³/h">
                         m³/h
@@ -1229,11 +1087,8 @@ h1 {
             ⏱️
         </div>
 
-        <div class="tituloError"
-             style="color:#fbbf24;">
-
+        <div class="tituloError warningTitle">
             YA REGISTRADO
-
         </div>
 
         <div
@@ -1242,8 +1097,7 @@ h1 {
         </div>
 
         <div
-            id="tiempoDuplicado"
-            class="detalleError">
+            id="tiempoDuplicado">
         </div>
 
         <div class="continuarRegistro">
@@ -1256,7 +1110,7 @@ h1 {
 
 
 <!-- =========================================================
-     ERROR DE CONEXIÓN
+     ERROR CONEXIÓN
 ========================================================= -->
 
 <div id="mensajeConexion">
@@ -1267,11 +1121,8 @@ h1 {
             ⚠️
         </div>
 
-        <div class="tituloError"
-             style="color:#fbbf24;">
-
+        <div class="tituloError warningTitle">
             ERROR DE CONEXIÓN
-
         </div>
 
         <div class="detalleError">
@@ -1400,7 +1251,7 @@ let temporizadorRespuesta =
 
 
 // =========================================================
-// CARGAR PÁGINA
+// INICIO
 // =========================================================
 
 window.onload = function() {
@@ -1411,7 +1262,9 @@ window.onload = function() {
         );
 
 
-    if (usuarioGuardado) {
+    if (
+        usuarioGuardado
+    ) {
 
         usuarioActual =
             usuarioGuardado;
@@ -1639,9 +1492,6 @@ function mostrarUsuarios(
     );
 
 
-    // Si hay usuario guardado
-    // y sigue activo, ocultar selección.
-
     if (
         usuarioActual &&
         usuarios.indexOf(
@@ -1667,7 +1517,7 @@ function mostrarUsuarios(
 
 
 // =========================================================
-// ERROR CARGA USUARIOS
+// ERROR USUARIOS
 // =========================================================
 
 function mostrarErrorUsuarios() {
@@ -1736,6 +1586,53 @@ function cambiarUsuario() {
 
 
 // =========================================================
+// CERRAR MENSAJES
+// =========================================================
+
+function cerrarMensajes() {
+
+    const ids = [
+
+        "mensajeRegistro",
+
+        "mensajePuntoNoEncontrado",
+
+        "mensajePuntoInactivo",
+
+        "mensajeInvalido",
+
+        "mensajeDuplicado",
+
+        "mensajeConexion"
+
+    ];
+
+
+    ids.forEach(
+        function(id) {
+
+            const elemento =
+                document.getElementById(
+                    id
+                );
+
+
+            if (
+                elemento
+            ) {
+
+                elemento.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================================
 // BLOQUEOS LOCALES
 // =========================================================
 
@@ -1757,10 +1654,6 @@ function obtenerBloqueos() {
 
 }
 
-
-// =========================================================
-// GUARDAR BLOQUEO LOCAL
-// =========================================================
 
 function guardarBloqueo(
     codigo
@@ -1784,10 +1677,6 @@ function guardarBloqueo(
 }
 
 
-// =========================================================
-// TIEMPO RESTANTE LOCAL
-// =========================================================
-
 function obtenerTiempoRestante(
     codigo
 ) {
@@ -1800,7 +1689,9 @@ function obtenerTiempoRestante(
         bloqueos[codigo];
 
 
-    if (!momento) {
+    if (
+        !momento
+    ) {
 
         return 0;
 
@@ -1878,7 +1769,7 @@ function formatearTiempo(
 
 
 // =========================================================
-// SONIDO ÉXITO
+// SONIDOS
 // =========================================================
 
 function reproducirSonidoExito() {
@@ -1941,10 +1832,6 @@ function reproducirSonidoExito() {
 }
 
 
-// =========================================================
-// SONIDO ERROR
-// =========================================================
-
 function reproducirSonidoError() {
 
     try {
@@ -2006,7 +1893,7 @@ function reproducirSonidoError() {
 
 
 // =========================================================
-// VIBRACIÓN ÉXITO
+// VIBRACIÓN
 // =========================================================
 
 function vibrarExito() {
@@ -2024,10 +1911,6 @@ function vibrarExito() {
 }
 
 
-// =========================================================
-// VIBRACIÓN ERROR
-// =========================================================
-
 function vibrarError() {
 
     if (
@@ -2039,51 +1922,6 @@ function vibrarError() {
         );
 
     }
-
-}
-
-
-// =========================================================
-// CERRAR MENSAJES
-// =========================================================
-
-function cerrarMensajes() {
-
-    const ids = [
-
-        "mensajeRegistro",
-
-        "mensajePuntoNoEncontrado",
-
-        "mensajePuntoInactivo",
-
-        "mensajeInvalido",
-
-        "mensajeDuplicado",
-
-        "mensajeConexion"
-
-    ];
-
-
-    ids.forEach(
-        function(id) {
-
-            const elemento =
-                document.getElementById(
-                    id
-                );
-
-
-            if (elemento) {
-
-                elemento.style.display =
-                    "none";
-
-            }
-
-        }
-    );
 
 }
 
@@ -2143,7 +1981,6 @@ function mostrarRegistrado(
 
             procesando =
                 false;
-
 
         },
         1800
@@ -2351,7 +2188,7 @@ function mostrarDuplicado(
 
 
 // =========================================================
-// MOSTRAR ERROR CONEXIÓN
+// ERROR CONEXIÓN
 // =========================================================
 
 function mostrarErrorConexion() {
@@ -2438,6 +2275,18 @@ function mostrarFormulario(
 
 
     document.getElementById(
+        "unidadPresion"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "unidadCaudal"
+    ).value =
+        "";
+
+
+    document.getElementById(
         "botonConfirmar"
     ).disabled =
         false;
@@ -2452,7 +2301,7 @@ function mostrarFormulario(
 
 
 // =========================================================
-// CANCELAR MUESTREO
+// CANCELAR
 // =========================================================
 
 function cancelarMuestreo() {
@@ -2500,11 +2349,32 @@ function confirmarMuestreo() {
     }
 
 
+    // ======================================
+    // FECHA OBLIGATORIA
+    // ======================================
+
     const fechaMuestreo =
         document.getElementById(
             "fechaMuestreo"
         ).value;
 
+
+    if (
+        !fechaMuestreo
+    ) {
+
+        alert(
+            "Debe indicar la fecha de muestreo."
+        );
+
+        return;
+
+    }
+
+
+    // ======================================
+    // DATOS OPCIONALES
+    // ======================================
 
     const presion =
         document.getElementById(
@@ -2537,82 +2407,75 @@ function confirmarMuestreo() {
 
 
     // ======================================
-    // VALIDACIÓN LOCAL
+    // TEMPERATURA:
+    // MÁXIMO UN DECIMAL
     // ======================================
 
     if (
-        !fechaMuestreo
+        temperatura !== ""
     ) {
 
-        alert(
-            "Debe indicar la fecha de muestreo."
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !presion
-    ) {
-
-        alert(
-            "Debe indicar la presión."
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !temperatura
-    ) {
-
-        alert(
-            "Debe indicar la temperatura."
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !caudal
-    ) {
-
-        alert(
-            "Debe indicar el caudal."
-        );
-
-        return;
-
-    }
-
-
-    // ======================================
-    // TEMPERATURA: UN SOLO DECIMAL
-    // ======================================
-
-    const numeroTemperatura =
-        Number(
+        const textoTemperatura =
             temperatura.replace(
                 ",",
                 "."
-            )
-        );
+            );
 
+
+        const numeroTemperatura =
+            Number(
+                textoTemperatura
+            );
+
+
+        if (
+            !Number.isFinite(
+                numeroTemperatura
+            )
+        ) {
+
+            alert(
+                "La temperatura no es válida."
+            );
+
+            return;
+
+        }
+
+
+        const partes =
+            textoTemperatura.split(
+                "."
+            );
+
+
+        if (
+            partes.length === 2 &&
+            partes[1].length > 1
+        ) {
+
+            alert(
+                "La temperatura debe tener como máximo un decimal."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    // ======================================
+    // SI HAY PRESIÓN, DEBE TENER UNIDAD
+    // ======================================
 
     if (
-        !Number.isFinite(
-            numeroTemperatura
-        )
+        presion !== "" &&
+        unidadPresion === ""
     ) {
 
         alert(
-            "La temperatura no es válida."
+            "Seleccione la unidad de presión."
         );
 
         return;
@@ -2620,26 +2483,17 @@ function confirmarMuestreo() {
     }
 
 
-    const textoTemperatura =
-        temperatura.replace(
-            ",",
-            "."
-        );
-
-
-    const partesTemperatura =
-        textoTemperatura.split(
-            "."
-        );
-
+    // ======================================
+    // SI HAY CAUDAL, DEBE TENER UNIDAD
+    // ======================================
 
     if (
-        partesTemperatura.length === 2 &&
-        partesTemperatura[1].length > 1
+        caudal !== "" &&
+        unidadCaudal === ""
     ) {
 
         alert(
-            "La temperatura debe tener como máximo un decimal."
+            "Seleccione la unidad de caudal."
         );
 
         return;
@@ -2699,7 +2553,7 @@ function confirmarMuestreo() {
 
 
 // =========================================================
-// ENVIAR MUESTREO A APPS SCRIPT
+// ENVIAR MUESTREO
 // =========================================================
 
 function enviarMuestreo(
@@ -2817,6 +2671,9 @@ function enviarMuestreo(
     script.onerror =
         function() {
 
+            restaurarBotonConfirmar();
+
+
             limpiarCallback(
                 callbackName
             );
@@ -2826,8 +2683,6 @@ function enviarMuestreo(
                 script
             );
 
-
-            restaurarBotonConfirmar();
 
             mostrarErrorConexion();
 
@@ -2859,6 +2714,7 @@ function enviarMuestreo(
 
                 restaurarBotonConfirmar();
 
+
                 mostrarErrorConexion();
 
             },
@@ -2869,7 +2725,7 @@ function enviarMuestreo(
 
 
 // =========================================================
-// PROCESAR RESPUESTA REGISTRO
+// PROCESAR RESPUESTA
 // =========================================================
 
 function procesarRespuestaRegistro(
@@ -2907,7 +2763,7 @@ function procesarRespuestaRegistro(
 
 
     // ======================================
-    // REGISTRO OK
+    // REGISTRO CORRECTO
     // ======================================
 
     if (
@@ -2974,24 +2830,6 @@ function procesarRespuestaRegistro(
         respuesta.tipo === "duplicado"
     ) {
 
-        document.getElementById(
-            "codigo"
-        ).innerText =
-            respuesta.codigo;
-
-
-        document.getElementById(
-            "estado"
-        ).innerText =
-            "Ya registrado";
-
-
-        document.getElementById(
-            "estado"
-        ).className =
-            "estado warning";
-
-
         restaurarBotonConfirmar();
 
 
@@ -3013,12 +2851,13 @@ function procesarRespuestaRegistro(
 
 
     // ======================================
-    // ERROR
+    // PUNTO NO ENCONTRADO
     // ======================================
 
     if (
         respuesta &&
-        respuesta.tipo === "punto_no_encontrado"
+        respuesta.tipo ===
+        "punto_no_encontrado"
     ) {
 
         restaurarBotonConfirmar();
@@ -3034,9 +2873,14 @@ function procesarRespuestaRegistro(
     }
 
 
+    // ======================================
+    // PUNTO INACTIVO
+    // ======================================
+
     if (
         respuesta &&
-        respuesta.tipo === "punto_inactivo"
+        respuesta.tipo ===
+        "punto_inactivo"
     ) {
 
         restaurarBotonConfirmar();
@@ -3051,6 +2895,10 @@ function procesarRespuestaRegistro(
 
     }
 
+
+    // ======================================
+    // QR INVÁLIDO
+    // ======================================
 
     if (
         respuesta &&
@@ -3071,6 +2919,45 @@ function procesarRespuestaRegistro(
 
 
     // ======================================
+    // DATOS INVALIDOS
+    // ======================================
+
+    if (
+        respuesta &&
+        (
+            respuesta.tipo ===
+            "datos_invalidos" ||
+
+            respuesta.tipo ===
+            "datos_incompletos"
+        )
+    ) {
+
+        restaurarBotonConfirmar();
+
+
+        alert(
+            respuesta.mensaje
+                ? respuesta.mensaje.replace(
+                    /^ERROR\|/,
+                    ""
+                )
+                : "Datos no válidos."
+        );
+
+
+        document.getElementById(
+            "formularioMuestreo"
+        ).style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    // ======================================
     // ERROR GENÉRICO
     // ======================================
 
@@ -3082,7 +2969,7 @@ function procesarRespuestaRegistro(
 
 
 // =========================================================
-// RESTAURAR BOTÓN CONFIRMAR
+// RESTAURAR BOTÓN
 // =========================================================
 
 function restaurarBotonConfirmar() {
@@ -3226,7 +3113,7 @@ function validarQR(
 
 
 // =========================================================
-// PROCESAR VALIDACIÓN QR
+// PROCESAR VALIDACIÓN
 // =========================================================
 
 function procesarValidacionQR(
@@ -3284,7 +3171,7 @@ function procesarValidacionQR(
 
 
     // ======================================
-    // PUNTO NO REGISTRADO
+    // NO ENCONTRADO
     // ======================================
 
     if (
@@ -3304,7 +3191,7 @@ function procesarValidacionQR(
 
 
     // ======================================
-    // PUNTO INACTIVO
+    // INACTIVO
     // ======================================
 
     if (
@@ -3343,10 +3230,6 @@ function procesarValidacionQR(
     }
 
 
-    // ======================================
-    // ERROR
-    // ======================================
-
     mostrarErrorConexion();
 
 }
@@ -3360,10 +3243,6 @@ function codigoLeido(
     codigo
 ) {
 
-    // --------------------------------------
-    // Evitar lecturas simultáneas
-    // --------------------------------------
-
     if (
         procesando
     ) {
@@ -3372,10 +3251,6 @@ function codigoLeido(
 
     }
 
-
-    // --------------------------------------
-    // Verificar usuario
-    // --------------------------------------
 
     if (
         !usuarioActual
@@ -3394,16 +3269,18 @@ function codigoLeido(
         codigo.trim();
 
 
-    if (!codigo) {
+    if (
+        !codigo
+    ) {
 
         return;
 
     }
 
 
-    // --------------------------------------
-    // Bloqueo local
-    // --------------------------------------
+    // ======================================
+    // BLOQUEO LOCAL
+    // ======================================
 
     const tiempoRestante =
         obtenerTiempoRestante(
@@ -3454,9 +3331,9 @@ function codigoLeido(
     }
 
 
-    // --------------------------------------
-    // Preparar validación
-    // --------------------------------------
+    // ======================================
+    // VALIDAR
+    // ======================================
 
     procesando =
         true;
@@ -3479,10 +3356,6 @@ function codigoLeido(
     ).className =
         "estado";
 
-
-    // --------------------------------------
-    // Validar con Apps Script
-    // --------------------------------------
 
     validarQR(
         codigo
@@ -3576,7 +3449,7 @@ scanner.render(
 
     function(error) {
 
-        // Errores normales de búsqueda.
+        // Errores normales de lectura.
         // Se ignoran.
 
     }
