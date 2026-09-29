@@ -1249,6 +1249,24 @@ let puntoActual =
 let temporizadorRespuesta =
     null;
 
+// Datos cargados localmente.
+// El escaneo NO consulta al servidor.
+// El servidor solo interviene al guardar el muestreo.
+let usuariosCache =
+    [];
+
+let puntosCache =
+    {};
+
+let datosLocalesCargados =
+    false;
+
+const CLAVE_USUARIOS_CACHE =
+    "usuariosQR_cache_v1";
+
+const CLAVE_PUNTOS_CACHE =
+    "puntosQR_cache_v1";
+
 
 // =========================================================
 // INICIO
@@ -1278,7 +1296,7 @@ window.onload = function() {
     }
 
 
-    cargarUsuarios();
+    cargarDatosLocales();
 
     establecerFechaActual();
 
@@ -1330,10 +1348,149 @@ function establecerFechaActual() {
 
 
 // =========================================================
-// CARGAR USUARIOS
+// CARGA DE DATOS LOCALES
+// =========================================================
+//
+// Los usuarios y puntos se guardan temporalmente en localStorage.
+// Una vez cargados, el QR se procesa 100 % en el teléfono.
+// NO se consulta Apps Script al escanear.
+//
+// Si no existe caché, se hace una única carga inicial.
+// Para actualizar manualmente los datos se puede usar
+// actualizarDatosDesdeServidor() desde la consola del navegador.
 // =========================================================
 
-function cargarUsuarios() {
+function cargarDatosLocales() {
+
+    let usuariosGuardados = null;
+    let puntosGuardados = null;
+
+    try {
+
+        usuariosGuardados =
+            JSON.parse(
+                localStorage.getItem(
+                    CLAVE_USUARIOS_CACHE
+                )
+            );
+
+    } catch (error) {
+
+        usuariosGuardados = null;
+
+    }
+
+
+    try {
+
+        puntosGuardados =
+            JSON.parse(
+                localStorage.getItem(
+                    CLAVE_PUNTOS_CACHE
+                )
+            );
+
+    } catch (error) {
+
+        puntosGuardados = null;
+
+    }
+
+
+    if (
+        Array.isArray(usuariosGuardados) &&
+        usuariosGuardados.length > 0 &&
+        puntosGuardados &&
+        typeof puntosGuardados === "object"
+    ) {
+
+        usuariosCache =
+            usuariosGuardados;
+
+        puntosCache =
+            puntosGuardados;
+
+        datosLocalesCargados =
+            true;
+
+        mostrarUsuarios(
+            usuariosCache
+        );
+
+        actualizarEstadoDatosLocales();
+
+        return;
+
+    }
+
+
+    // Primera carga: solamente aquí se consulta el servidor.
+    cargarDatosDesdeServidor();
+
+}
+
+
+// =========================================================
+// CARGAR DATOS DESDE SERVIDOR
+// =========================================================
+
+function cargarDatosDesdeServidor() {
+
+    mostrarEstadoCargaDatos(
+        "Cargando datos iniciales..."
+    );
+
+    cargarUsuariosDesdeServidor(
+        function(usuarios) {
+
+            usuariosCache =
+                usuarios;
+
+            localStorage.setItem(
+                CLAVE_USUARIOS_CACHE,
+                JSON.stringify(
+                    usuariosCache
+                )
+            );
+
+            cargarPuntosDesdeServidor(
+                function(puntos) {
+
+                    puntosCache =
+                        puntos;
+
+                    localStorage.setItem(
+                        CLAVE_PUNTOS_CACHE,
+                        JSON.stringify(
+                            puntosCache
+                        )
+                    );
+
+                    datosLocalesCargados =
+                        true;
+
+                    mostrarUsuarios(
+                        usuariosCache
+                    );
+
+                    actualizarEstadoDatosLocales();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// USUARIOS - CARGA DESDE SERVIDOR
+// =========================================================
+
+function cargarUsuariosDesdeServidor(
+    callbackExito
+) {
 
     const callbackName =
         "usuariosQR_" +
@@ -1357,7 +1514,6 @@ function cargarUsuarios() {
                 callbackName
             );
 
-
             limpiarScript(
                 script
             );
@@ -1378,7 +1534,7 @@ function cargarUsuarios() {
             }
 
 
-            mostrarUsuarios(
+            callbackExito(
                 respuesta.usuarios
             );
 
@@ -1407,11 +1563,9 @@ function cargarUsuarios() {
                 callbackName
             );
 
-
             limpiarScript(
                 script
             );
-
 
             mostrarErrorUsuarios();
 
@@ -1424,6 +1578,218 @@ function cargarUsuarios() {
 
 }
 
+
+// =========================================================
+// PUNTOS - CARGA DESDE SERVIDOR
+// =========================================================
+
+function cargarPuntosDesdeServidor(
+    callbackExito
+) {
+
+    const callbackName =
+        "puntosQR_" +
+        Date.now() +
+        "_" +
+        Math.floor(
+            Math.random() * 100000
+        );
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    window[callbackName] =
+        function(respuesta) {
+
+            limpiarCallback(
+                callbackName
+            );
+
+            limpiarScript(
+                script
+            );
+
+
+            if (
+                !respuesta ||
+                respuesta.ok !== true ||
+                !Array.isArray(
+                    respuesta.puntos
+                )
+            ) {
+
+                mostrarErrorUsuarios();
+
+                return;
+
+            }
+
+
+            const mapa =
+                {};
+
+
+            respuesta.puntos.forEach(
+                function(punto) {
+
+                    const codigo =
+                        String(
+                            punto.codigo || ""
+                        )
+                        .trim()
+                        .toUpperCase();
+
+
+                    if (!codigo) {
+                        return;
+                    }
+
+
+                    mapa[codigo] = {
+
+                        codigo:
+                            punto.codigo,
+
+                        nombre:
+                            punto.nombre,
+
+                        empresa:
+                            punto.empresa,
+
+                        activo:
+                            punto.activo === true
+
+                    };
+
+                }
+            );
+
+
+            callbackExito(
+                mapa
+            );
+
+        };
+
+
+    script.src =
+        APPS_SCRIPT_URL +
+        "?accion=puntos" +
+        "&callback=" +
+        encodeURIComponent(
+            callbackName
+        ) +
+        "&t=" +
+        Date.now();
+
+
+    script.async =
+        true;
+
+
+    script.onerror =
+        function() {
+
+            limpiarCallback(
+                callbackName
+            );
+
+            limpiarScript(
+                script
+            );
+
+            mostrarErrorUsuarios();
+
+        };
+
+
+    document.body.appendChild(
+        script
+    );
+
+}
+
+
+// =========================================================
+// ACTUALIZACIÓN MANUAL DE DATOS
+// =========================================================
+
+function actualizarDatosDesdeServidor() {
+
+    localStorage.removeItem(
+        CLAVE_USUARIOS_CACHE
+    );
+
+    localStorage.removeItem(
+        CLAVE_PUNTOS_CACHE
+    );
+
+    datosLocalesCargados =
+        false;
+
+    cargarDatosDesdeServidor();
+
+}
+
+
+// =========================================================
+// ESTADO DE DATOS LOCALES
+// =========================================================
+
+function mostrarEstadoCargaDatos(
+    texto
+) {
+
+    const estado =
+        document.getElementById(
+            "estado"
+        );
+
+    if (estado) {
+
+        estado.innerText =
+            texto;
+
+        estado.className =
+            "estado";
+
+    }
+
+}
+
+
+function actualizarEstadoDatosLocales() {
+
+    const cantidadPuntos =
+        Object.keys(
+            puntosCache
+        ).length;
+
+
+    const estado =
+        document.getElementById(
+            "estado"
+        );
+
+    if (
+        estado
+    ) {
+
+        estado.innerText =
+            "Datos locales cargados: " +
+            cantidadPuntos +
+            " puntos";
+
+        estado.className =
+            "estado ok";
+
+    }
+
+}
 
 // =========================================================
 // MOSTRAR USUARIOS
@@ -1574,7 +1940,9 @@ function cambiarUsuario() {
 
     cerrarMensajes();
 
-    cargarUsuarios();
+    mostrarUsuarios(
+        usuariosCache
+    );
 
 
     document.getElementById(
@@ -2555,6 +2923,11 @@ function confirmarMuestreo() {
 // =========================================================
 // ENVIAR MUESTREO
 // =========================================================
+//
+// ESTA ES LA CONEXIÓN AL SERVIDOR.
+// El escaneo y la identificación del punto ya ocurrieron
+// completamente en el teléfono.
+// =========================================================
 
 function enviarMuestreo(
 
@@ -2991,239 +3364,142 @@ function restaurarBotonConfirmar() {
 
 
 // =========================================================
-// VALIDAR QR
+// VALIDAR QR LOCALMENTE
+// =========================================================
+//
+// IMPORTANTE:
+// Esta función NO llama a Apps Script.
+// El texto del QR se valida y el punto se busca
+// directamente en puntosCache.
 // =========================================================
 
-function validarQR(
+function validarQRLocal(
     codigo
 ) {
 
-    const callbackName =
-        "validacionQR_" +
-        Date.now() +
-        "_" +
-        Math.floor(
-            Math.random() *
-            100000
+    const patron =
+        /^QuimiterraSA - Pto\. Medición -\[([^\]]+)\]-$/;
+
+
+    const resultado =
+        codigo.match(
+            patron
         );
 
 
-    const script =
-        document.createElement(
-            "script"
-        );
+    if (
+        !resultado
+    ) {
 
-
-    window[callbackName] =
-        function(respuesta) {
-
-            procesarValidacionQR(
-
-                respuesta,
-
-                callbackName,
-
-                script
-
-            );
-
-        };
-
-
-    const url =
-        APPS_SCRIPT_URL +
-
-        "?accion=validar" +
-
-        "&codigo=" +
-        encodeURIComponent(
+        mostrarInvalido(
             codigo
-        ) +
-
-        "&usuario=" +
-        encodeURIComponent(
-            usuarioActual
-        ) +
-
-        "&callback=" +
-        encodeURIComponent(
-            callbackName
-        ) +
-
-        "&t=" +
-        Date.now();
-
-
-    script.src =
-        url;
-
-
-    script.async =
-        true;
-
-
-    script.onerror =
-        function() {
-
-            limpiarCallback(
-                callbackName
-            );
-
-
-            limpiarScript(
-                script
-            );
-
-
-            mostrarErrorConexion();
-
-        };
-
-
-    document.body.appendChild(
-        script
-    );
-
-
-    temporizadorRespuesta =
-        setTimeout(
-            function() {
-
-                limpiarCallback(
-                    callbackName
-                );
-
-
-                limpiarScript(
-                    script
-                );
-
-
-                temporizadorRespuesta =
-                    null;
-
-
-                mostrarErrorConexion();
-
-            },
-            8000
         );
+
+        return;
+
+    }
+
+
+    const codigoExtraido =
+        resultado[1]
+        .trim();
+
+
+    if (
+        !codigoExtraido
+    ) {
+
+        mostrarInvalido(
+            codigo
+        );
+
+        return;
+
+    }
+
+
+    const clave =
+        codigoExtraido
+        .toUpperCase();
+
+
+    const punto =
+        puntosCache[
+            clave
+        ];
+
+
+    if (
+        !punto
+    ) {
+
+        mostrarPuntoNoEncontrado(
+            codigoExtraido
+        );
+
+        return;
+
+    }
+
+
+    if (
+        punto.activo !== true
+    ) {
+
+        mostrarPuntoInactivo(
+            punto
+        );
+
+        return;
+
+    }
+
+
+    mostrarFormulario({
+
+        ok:
+            true,
+
+        tipo:
+            "punto_valido",
+
+        codigo:
+            punto.codigo,
+
+        nombre:
+            punto.nombre,
+
+        empresa:
+            punto.empresa,
+
+        usuario:
+            usuarioActual
+
+    });
 
 }
 
 
 // =========================================================
-// PROCESAR VALIDACIÓN
+// COMPATIBILIDAD VISUAL
+// =========================================================
+//
+// Se conserva el nombre de la función anterior para no
+// romper otras llamadas, pero ahora trabaja localmente.
 // =========================================================
 
 function procesarValidacionQR(
-
-    respuesta,
-
-    callbackName,
-
-    script
-
+    respuesta
 ) {
 
     if (
-        temporizadorRespuesta
-    ) {
-
-        clearTimeout(
-            temporizadorRespuesta
-        );
-
-        temporizadorRespuesta =
-            null;
-
-    }
-
-
-    limpiarCallback(
-        callbackName
-    );
-
-
-    limpiarScript(
-        script
-    );
-
-
-    // ======================================
-    // PUNTO VÁLIDO
-    // ======================================
-
-    if (
         respuesta &&
-        respuesta.ok === true &&
-        respuesta.tipo === "punto_valido"
+        respuesta.ok === true
     ) {
 
         mostrarFormulario(
             respuesta
         );
-
-
-        return;
-
-    }
-
-
-    // ======================================
-    // NO ENCONTRADO
-    // ======================================
-
-    if (
-        respuesta &&
-        respuesta.tipo ===
-        "punto_no_encontrado"
-    ) {
-
-        mostrarPuntoNoEncontrado(
-            respuesta.codigo
-        );
-
-
-        return;
-
-    }
-
-
-    // ======================================
-    // INACTIVO
-    // ======================================
-
-    if (
-        respuesta &&
-        respuesta.tipo ===
-        "punto_inactivo"
-    ) {
-
-        mostrarPuntoInactivo(
-            respuesta
-        );
-
-
-        return;
-
-    }
-
-
-    // ======================================
-    // QR INVÁLIDO
-    // ======================================
-
-    if (
-        respuesta &&
-        respuesta.tipo ===
-        "invalido"
-    ) {
-
-        mostrarInvalido(
-            respuesta.codigo
-        );
-
 
         return;
 
@@ -3233,7 +3509,6 @@ function procesarValidacionQR(
     mostrarErrorConexion();
 
 }
-
 
 // =========================================================
 // LEER QR
@@ -3332,8 +3607,24 @@ function codigoLeido(
 
 
     // ======================================
-    // VALIDAR
+    // VALIDAR LOCALMENTE
     // ======================================
+
+    if (
+        !datosLocalesCargados
+    ) {
+
+        procesando =
+            false;
+
+        mostrarEstadoCargaDatos(
+            "Los datos todavía no fueron cargados."
+        );
+
+        return;
+
+    }
+
 
     procesando =
         true;
@@ -3348,7 +3639,7 @@ function codigoLeido(
     document.getElementById(
         "estado"
     ).innerText =
-        "Validando punto...";
+        "Verificando punto...";
 
 
     document.getElementById(
@@ -3357,7 +3648,8 @@ function codigoLeido(
         "estado";
 
 
-    validarQR(
+    // NO HAY LLAMADA AL SERVIDOR.
+    validarQRLocal(
         codigo
     );
 
